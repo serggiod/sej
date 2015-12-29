@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es" ng-app="sej">
+<head>
+	<meta charset="UTF-8"/>
+	<title>SEJ | </title>
+
+	<style type="text/css">
+		html, .body{
+			border:0;
+			margin:0;
+			padding:0;
+			overflow:auto;
+		}
+		.backwhite{
+			background-color: #fff;
+		}
+		.loading{
+			text-align: center;
+			width: 300px;
+			height: 150px;
+			overflow: hidden;
+			padding: 20px;
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			margin: auto;
+		}
+		.loading img{
+			width:200px;
+		}
+		.landing{
+			display:block;
+			width:100%;
+			height:200px;
+			background-image:url('img/landing.jpg');
+			background-repeat: repeat-x;
+		}
+		.view{
+			display: block;
+			width: 100%;
+			height: auto;
+			position: relative;
+			top: -180px;
+		}
+	</style>
+</head>
+<body class="body backwhite">
+
+	<div class="loading">
+		<img src="img/loading.gif"/>
+		<br/>
+		<span>
+			Cargando...
+		</span>
+	</div>
+
+	<!-- Libreria JS: JQuery -->
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+
+	<!-- Libreria JS: CryptoJS.MD5 -->
+	<script type="text/javascript" src="js/core-min.js"></script>
+	<script type="text/javascript" src="js/md5-min.js"></script>	
+
+	<!-- Libreria JS: Materialize -->
+	<link rel="stylesheet" href="js/materialize.min.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<script src="js/materialize.min.js"></script>
+  
+
+	<!-- Libreria JS: Angular -->
+	<script type="text/javascript" src="js/angular.min.js"></script>
+	<script type="text/javascript" src="js/angular-route.min.js"></script>
+	<script type="text/javascript" src="js/angular-sanitize.min.js"></script>
+
+	<!-- Aplicacion Angular -->
+	<script type="text/javascript" src="application/application.js"></script>
+	<script type="text/javascript" src="controllers/login.js"></script>
+	<script type="text/javascript" src="controllers/mdi.js"></script>
+
+	<nav id="navbar" class="blue darken-4">
+		<div id="navbar-logo" class="brand-logo left">
+			SEJ | Login
+		</div>
+	</nav>
+
+	<section class="landing blue lighten-2"></section>
+	<section class="view section row" ng-view></section>
+</body>
+</html>
