@@ -4,4 +4,6 @@ angular
 
 		$('.loading').hide();
 
+		
+
 	});

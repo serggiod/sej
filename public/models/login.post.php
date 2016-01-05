@@ -17,7 +17,10 @@ if($_SERVER['REQUEST_METHOD']==='POST'){
 	// Validar datos
 	if(is_string($u_nombre) && is_string($u_clave)){
 
-		$json = array('result'=>false);
+		$json = array(
+			'result'=>false,
+			'user'=>null
+		);
 
 		$query = $db->query("select u_codigo codigo, u_nombre nombre, u_correo correo from usuario where u_nombre='$u_nombre' and u_clave='$u_clave';");
 		$usuario = $query->fetch(PDO::FETCH_OBJ);
@@ -25,7 +28,10 @@ if($_SERVER['REQUEST_METHOD']==='POST'){
 		if(is_numeric($usuario->codigo)){
 			
 			$json['result'] = true;
-			$json['usuario'] = $usuario;
+			$json['user'] = array(
+				'id' => $usuario->codigo,
+				'nombre' => $usuario->nombre
+			);
 
 		} 
 

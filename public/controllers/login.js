@@ -1,6 +1,6 @@
 angular
 	.module('sej')
-	.controller('login',function($scope,$location,$http){
+	.controller('login',function($scope,$location,$http,$session){
 
 		// Ocultar loading.
 		$('.loading').hide();
@@ -27,30 +27,41 @@ angular
 
 
 				$http.post('models/login.post.php/',json)
+				
 				.success(function(json){
 					if(json.result){
 
 						$scope.alert.color = 'green lighten-3';
 						$scope.alert.text  = 'Ha ingresado en forma correcta.';
 
-						$('#navbar-logo').html('SEJ | Hola '+json.usuario.nombre);
+						// Iniciar session.
+						$session.start(JSON.stringify(json.user));
+
+						// Solicitar menu de aplicación.
 						$.get('views/menu.html',function(html){
-							$('#navbar').append(html);
-						});
+							user = JSON.parse($session.getUser());
+							$('#navbar-logo').html('SEJ | Hola '+user.nombre);
+							$('#mainmenu').html(html);
+							$("#menuArchivoMain").dropdown();
+						});	
 
-						$location.path('/mdi');
+						$location.path('/mdi');					
 
-					} else {
+					} 
+
+					else {
 
 						$scope.alert.color = 'red lighten-4';
 						$scope.alert.text  = 'El servidor informa que este usuario no existe.';
 
 					}
 				})
+				
 				.error(function(){
 					$scope.alert.color = 'red lighten-4';
 					$scope.alert.text  = 'El servidor informa que este usuario no existe.';
 				});
+				
 			} 
 
 			else {
