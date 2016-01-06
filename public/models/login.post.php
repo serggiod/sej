@@ -27,11 +27,16 @@ if($_SERVER['REQUEST_METHOD']==='POST'){
 		
 		if(is_numeric($usuario->codigo)){
 			
-			$json['result'] = true;
-			$json['user'] = array(
+			$date                   = new DateTime();
+			$_SESSION['loggedin']   = true;
+			$_SESSION['loggeddate'] = $date->getTimestamp();
+			$_SESSION['user']       = array(
 				'id' => $usuario->codigo,
 				'nombre' => $usuario->nombre
 			);
+
+			$json['result'] = true;
+			$json['user']   = $_SESSION['user']; 
 
 		} 
 

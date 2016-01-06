@@ -1,9 +1,7 @@
 angular
 	.module('sej')
-	.controller('mdi',function($scope,$location,$http){
+	.controller('mdi',function($scope,$location,$http,$session){
 
-		$('.loading').hide();
-
-		
+		$session.mainmenu();		
 
 	});

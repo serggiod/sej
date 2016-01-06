@@ -36,15 +36,7 @@ angular
 
 						// Iniciar session.
 						$session.start(JSON.stringify(json.user));
-
-						// Solicitar menu de aplicación.
-						$.get('views/menu.html',function(html){
-							user = JSON.parse($session.getUser());
-							$('#navbar-logo').html('SEJ | Hola '+user.nombre);
-							$('#mainmenu').html(html);
-							$("#menuArchivoMain").dropdown();
-						});	
-
+						$session.mainmenu();
 						$location.path('/mdi');					
 
 					} 

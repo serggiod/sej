@@ -6,6 +6,10 @@ angular
 		        templateUrl:'views/login.html',
 		        controller:'login'
 		    })
+		    .when('/password',{
+		    	templateUrl:'views/password.html',
+		    	controller:'password'
+		    })
 		    .when('/mdi',{
 		        templateUrl:'views/mdi.html',
 		        controller:'mdi'
