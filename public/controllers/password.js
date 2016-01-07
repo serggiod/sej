@@ -50,6 +50,9 @@ angular
 			$location.path('/mdi');
 		};
 
-		$session.mainmenu();
-		$scope.init();
+		$session.autorize(function(){
+			$session.mainmenu();
+			$scope.init();
+		});
+
 	});

@@ -2,6 +2,8 @@ angular
 	.module('sej')
 	.controller('mdi',function($scope,$location,$http,$session){
 
-		$session.mainmenu();		
+		$session.autorize(function(){
+			$session.mainmenu();
+		});		
 
 	});

@@ -2,8 +2,11 @@ angular
 	.module('sej')
 	.controller('login',function($scope,$location,$http,$session){
 
+		$session.destroy();
+		
 		// Ocultar loading.
-		$('.loading').hide();
+		$('#navbar-logo').html('SEJ | Login');
+		$('#mainmenu').html('');
 
 		$scope.alert    = {
 			color:'green lighten-4',

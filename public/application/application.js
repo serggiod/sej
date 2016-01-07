@@ -10,6 +10,14 @@ angular
 		    	templateUrl:'views/password.html',
 		    	controller:'password'
 		    })
+		    .when('/logout',{
+		    	templateUrl:'views/logout.html',
+		    	controller:'logout'
+		    })
+		    .when('/acercade',{
+		    	templateUrl:'views/acercade.html',
+		    	controller:'acercade'
+		    })
 		    .when('/mdi',{
 		        templateUrl:'views/mdi.html',
 		        controller:'mdi'
@@ -18,5 +26,5 @@ angular
 		        templateUrl:'views/login.html',
 		        controller:'login'
 		    })
-		    .otherwise({redirectTo:'/'});
+		    .otherwise({redirectTo:'/logout'});
 	});

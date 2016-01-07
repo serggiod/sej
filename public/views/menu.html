@@ -1,16 +1,56 @@
-<ul id="menuArchivo" class="dropdown-content">
-	<li><a href="#/password">Cambiar el password</a></li>
-	<li class="divider"></li>
-	<li><a href="#/logout">Salir del sistema</a></li>
-</ul>
-
 <ul>
 	<li>
-		<a id="menuArchivoMain" class="dropdown-button"  data-activates="menuArchivo">
+		<a id="menuArchivoMain" href="javascript:void(0);" class="dropdown-button"  data-activates="menuArchivo">
 			Archivo
-			<i class="material-icons right">arrow_drop_down</i>
+			<i class="material-icons right">
+				arrow_drop_down
+			</i>
 		</a>
 	</li>
-	<li><a href="#/mdi">Herramientas</a></li>
-	<li><a href="#/mdi">Ayuda</a></li>
+	<li>
+		<a id="menuHerramientasMain" href="javascript:void(0);" class="dropdown-button" data-activates="menuHerramientas">
+			Herramientas
+			<i class="material-icons right">
+				arrow_drop_down
+			</i>
+		</a>
+	</li>
+	<li>
+		<a id="menuAyudaMain" href="javascript:void(0);" class="dropdown-button" data-activates="menuAyuda">
+			Ayuda
+			<i class="material-icons right">
+				arrow_drop_down
+			</i>
+		</a>
+	</li>
+</ul>
+
+<ul id="menuArchivo" class="dropdown-content">
+	<li>
+		<a href="#/password">
+			Cambiar el password
+		</a>
+	</li>
+	<li class="divider"></li>
+	<li>
+		<a href="#/logout">
+			Salir del sistema
+		</a>
+	</li>
+</ul>
+
+<ul id="menuHerramientas" class="dropdown-content">
+	<li>
+		<a href="#/escuelas">
+			Escuelas
+		</a>
+	</li>
+</ul>
+
+<ul id="menuAyuda" class="dropdown-content">
+	<li>
+		<a href="#/acercade">
+			Acerca de...
+		</a>
+	</li>
 </ul>
