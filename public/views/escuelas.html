@@ -1,0 +1,72 @@
+<div class="col s12 m12 l12">
+	<div class="card white z-depth-3">
+
+		<!-- Titulo del formulario-->
+		<div class="card grey lighten-3">
+			<div class="card-action">
+				<h5 class="center">
+					Administrar Escuelas
+				</h5>
+			</div>			
+		</div>
+		<div class="card-content white black-text">
+
+			<!-- Boton: Nueva Escuela -->
+			<buttton type="button" class="btn orange darken-4">
+				Nueva Escuela
+				<i class="material-icons right">
+					add
+				</i>
+			</buttton>
+
+			<!-- Tabla: Escuelas -->
+			<table class="table bordered striped highlight responsive-table">
+				<tr>
+					<td>
+						NUMERO
+					</td>
+					<td>
+						NOMBRE
+					</td>
+					<td>
+						DIRECCION
+					</td>
+					<td>
+						TELEFONO
+					</td>
+					<td>
+						CROQUI
+					</td>
+					<td>
+						ACCIONES
+					</td>
+				</tr>
+				<tr ng-repeat="e in escuelas">
+					<td>
+						{{e.numero}}
+					</td>
+					<td>
+						{{e.nombre}}
+					</td>
+					<td>
+						{{e.direccion}}
+					</td>
+					<td>
+						{{e.telefono}}
+					</td>
+					<td>
+						{{e.croqui}}
+					</td>
+					<td>
+						
+					</td>
+				</tr>
+
+			</table>
+		</div>
+		<div class="card-action blue darken-3">
+			
+		</div>
+		
+	</div>
+</div>

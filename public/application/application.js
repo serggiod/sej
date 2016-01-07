@@ -26,5 +26,9 @@ angular
 		        templateUrl:'views/login.html',
 		        controller:'login'
 		    })
+		    .when('/escuelas',{
+		    	templateUrl:'views/escuelas.html',
+		    	controller:'escuelas'
+		    })
 		    .otherwise({redirectTo:'/logout'});
 	});
