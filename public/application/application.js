@@ -34,5 +34,9 @@ angular
 		    	templateUrl:'views/alumnos.html',
 		    	controller:'alumnos'
 		    })
+		    .when('/cargos',{
+		    	templateUrl:'views/cargos.html',
+		    	controller:'cargos'
+		    })
 		    .otherwise({redirectTo:'/logout'});
 	});
