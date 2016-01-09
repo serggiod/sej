@@ -1,0 +1,246 @@
+<!-- Formulario: tabla-->
+<div class="col s12 m12 l12" ng-show="formTablaShow">
+	<div class="card white z-depth-3">
+
+		<!-- Titulo del formulario-->
+		<div class="card grey lighten-3">
+			<div class="card-action">
+				<h5 class="center">
+					LICENCIAS | Lista
+				</h5>
+			</div>			
+		</div>
+		<div class="card-content white black-text">
+
+			<!-- Boton: Nueva Escuela -->
+			<buttton type="button" class="btn orange darken-4" ng-click="nuevo()">
+				Nueva Licencias
+				<i class="icons ion-android-add-circle right"></i>
+			</buttton>
+
+			<!-- Tabla: ALUMNOS -->
+			<table class="table bordered striped highlight responsive-table">
+				<tr>
+					<td>
+						LNUMERO
+					</td>
+					<td>
+						DDOCUME
+					</td>
+					<td>
+						LCAUSA
+					</td>
+					<td>
+						ACCIONES
+					</td>
+				</tr>
+				<tr ng-repeat="l in licencias">
+					<td>
+						{{l.l_numero}}
+					</td>
+					<td>
+						{{l.d_docume}}
+					</td>
+					<td>
+						{{l.l_causa}}
+					</td>
+					<td>
+						<button type="button" class="blue darken-4 white-text" style="border:0;" ng-click="visualizar(l.l_numero)">
+							<i class="icons ion-android-search"></i>
+						</button>
+						<button type="button" class="blue darken-4 white-text" style="border:0;" ng-click="modificar(l.l_numero)">
+							<i class="icons ion-android-create"></i>
+						</button>
+						<button type="button" class="red darken-4 white-text" style="border:0;" ng-click="eliminar(l.l_numero)">
+							<i class="icons ion-android-remove-circle"></i>
+						</button>
+					</td>
+				</tr>
+
+			</table>
+		</div>
+		<div class="card-action blue darken-3">
+			
+		</div>
+		
+	</div>
+</div>
+
+<!-- Formulario: Nuevo -->
+<div class="col s12 m12 l12" ng-show="formNuevoShow">
+	<div class="row">
+		<div class="col s10 m8 l6 offset-s1 offset-2 offset-l3">
+			<div class="card white z-depth-5">
+				<div class="card-action grey lighten-3 center">
+					<h5>
+						LICENCIAS | Nuevo
+					</h5>
+				</div>
+				<div class="card-action {{alertColor}} lighten-4 black-text">
+					{{alertText}}
+				</div>
+				<div class="card-content white black-text">
+
+					<!--| l_numero | int(9)  | NO   | PRI | 0       |       |-->
+					<div class="input-field">
+						<input id="l_numero" type="number" maxlength="9" ng-model="l_numero" class="validate">
+						<label for="l_numero">l_numero:</label>
+					</div>
+
+					<!--| d_docume | int(9)  | NO   | PRI | 0       |       |-->
+					<div class="input-field">
+						<input id="d_docume" type="number" maxlength="9" ng-model="d_docume" class="validate">
+						<label for="d_docume">d_docume:</label>
+					</div>
+
+					<!--| l_causa  | char(6) | YES  |     | NULL    |       |-->
+					<div class="input-field">
+						<input id="l_causa" type="text" maxlength="6" ng-model="l_causa" class="validate">
+						<label for="l_causa">l_causa:</label>
+					</div>
+
+					<!--| l_desde  | date    | YES  |     | NULL    |       |-->
+					<div class="input-field">
+						<input id="l_desde" type="date" ng-model="l_desde" class="validate">
+						<label for="l_desde">l_desde:</label>
+					</div>
+
+					<!--| l_hasta  | date    | YES  |     | NULL    |       |-->
+					<div class="input-field">
+						<input id="l_hasta" type="date" ng-model="l_hasta" class="validate">
+						<label for="l_hasta">l_hasta:</label>
+					</div>
+			
+				</div>
+				<div class="card-action blue darken-3">
+					<buttton type="button" class="btn orange darken-4" ng-click="nuevoCancelar()">
+						Cancelar
+						<i class="icons ion-android-cancel right"></i>
+					</buttton>
+					<buttton type="button" class="btn orange darken-4" ng-click="nuevoAceptar()">
+						Aceptar
+						<i class="icons ion-android-send right"></i>
+					</buttton>			
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Formulario: Visualizar -->
+<div class="col s12 m12 l12" ng-show="formVisualizarShow">
+	<div class="row">
+		<div class="col s10 m8 l6 offset-s1 offset-2 offset-l3">
+			<div class="card white z-depth-5">
+				<div class="card-action grey lighten-3 center">
+					<h5>
+						LICENCIAS | Visualizar
+					</h5>
+				</div>
+				<div class="card-action {{alertColor}} lighten-4 black-text">
+					{{alertText}}
+				</div>
+				<div class="card-content white black-text">
+
+					<!--| l_numero | int(9)  | NO   | PRI | 0       |       |-->
+					<label for="l_numero">l_numero:</labe>
+					<div class="input-field">
+						<input id="l_numero" type="number" maxlength="9" ng-model="l_numero" class="validate" readonly>
+					</div>
+
+					<!--| d_docume | int(9)  | NO   | PRI | 0       |       |-->
+					<label for="d_docume">d_docume:</labe>
+					<div class="input-field">
+						<input id="d_docume" type="number" maxlength="9" ng-model="d_docume" class="validate" readonly>
+					</div>
+
+					<!--| l_causa  | char(6) | YES  |     | NULL    |       |-->
+					<label for="l_causa">l_causa:</label>
+					<div class="input-field">
+						<input id="l_causa" type="text" maxlength="6" ng-model="l_causa" class="validate" readonly>
+					</div>
+
+					<!--| l_desde  | date    | YES  |     | NULL    |       |-->
+					<label for="l_desde">l_desde:</label>
+					<div class="input-field">
+						<input id="l_desde" type="date" ng-model="l_desde" class="validate" readonly>
+					</div>
+
+					<!--| l_hasta  | date    | YES  |     | NULL    |       |-->
+					<label for="l_hasta">l_hasta:</label>
+					<div class="input-field">
+						<input id="l_hasta" type="date" ng-model="l_hasta" class="validate" readonly>
+					</div>
+
+				</div>
+				<div class="card-action blue darken-3">
+					<buttton type="button" class="btn orange darken-4" ng-click="visualizarCancelar()">
+						Aceptar
+						<i class="icons ion-android-cancel right"></i>
+					</buttton>			
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Formulario: Modificar -->
+<div class="col s12 m12 l12" ng-show="formModificarShow">
+	<div class="row">
+		<div class="col s10 m8 l6 offset-s1 offset-2 offset-l3">
+			<div class="card white z-depth-5">
+				<div class="card-action grey lighten-3 center">
+					<h5>
+						ALUMNOS | Modificar
+					</h5>
+				</div>
+				<div class="card-action {{alertColor}} lighten-4 black-text">
+					{{alertText}}
+				</div>
+				<div class="card-content white black-text">
+
+					<!--| l_numero | int(9)  | NO   | PRI | 0       |       |-->
+					<label for="l_numero">l_numero:</labe>
+					<div class="input-field">
+						<input id="l_numero" type="number" maxlength="9" ng-model="l_numero" class="validate" readonly>
+					</div>
+
+					<!--| d_docume | int(9)  | NO   | PRI | 0       |       |-->
+					<label for="d_docume">d_docume:</labe>
+					<div class="input-field">
+						<input id="d_docume" type="number" maxlength="9" ng-model="d_docume" class="validate">
+					</div>
+
+					<!--| l_causa  | char(6) | YES  |     | NULL    |       |-->
+					<label for="l_causa">l_causa:</label>
+					<div class="input-field">
+						<input id="l_causa" type="text" maxlength="6" ng-model="l_causa" class="validate">
+					</div>
+
+					<!--| l_desde  | date    | YES  |     | NULL    |       |-->
+					<label for="l_desde">l_desde:</label>
+					<div class="input-field">
+						<input id="l_desde" type="date" ng-model="l_desde" class="validate">
+					</div>
+
+					<!--| l_hasta  | date    | YES  |     | NULL    |       |-->
+					<label for="l_hasta">l_hasta:</label>
+					<div class="input-field">
+						<input id="l_hasta" type="date" ng-model="l_hasta" class="validate">
+					</div>
+
+				</div>
+				<div class="card-action blue darken-3">
+					<buttton type="button" class="btn orange darken-4" ng-click="modificarCancelar()">
+						Cancelar
+						<i class="icons ion-android-cancel right"></i>
+					</buttton>
+					<buttton type="button" class="btn orange darken-4" ng-click="modificarAceptar()">
+						Aceptar
+						<i class="icons ion-android-send right"></i>
+					</buttton>			
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

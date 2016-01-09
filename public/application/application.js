@@ -38,5 +38,13 @@ angular
 		    	templateUrl:'views/cargos.html',
 		    	controller:'cargos'
 		    })
-		    .otherwise({redirectTo:'/logout'});
+		    .when('/cursos',{
+		    	templateUrl:'views/cursos.html',
+		    	controller:'cursos'
+		    })
+		    .when('/licencias',{
+		    	templateUrl:'views/licencias.html',
+		    	controller:'licencias'
+		    })
+		    .otherwise({redirectTo:'/login'});
 	});
