@@ -46,5 +46,9 @@ angular
 		    	templateUrl:'views/licencias.html',
 		    	controller:'licencias'
 		    })
+		    .when('/materias',{
+		    	templateUrl:'views/materias.html',
+		    	controller:'materias'
+		    })
 		    .otherwise({redirectTo:'/login'});
 	});
