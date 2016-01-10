@@ -1,0 +1,428 @@
+<!-- Formulario: tabla-->
+<div class="col s12 m12 l12" ng-show="formTablaShow">
+	<div class="card white z-depth-3">
+
+		<!-- Titulo del formulario-->
+		<div class="card grey lighten-3">
+			<div class="card-action">
+				<h5 class="center">
+					TUTORES | Lista
+				</h5>
+			</div>			
+		</div>
+		<div class="card-content white black-text">
+
+			<!-- Boton: Nueva Escuela -->
+			<buttton type="button" class="btn orange darken-4" ng-click="nuevo()">
+				Nuevo Tutor
+				<i class="icons ion-android-add-circle right"></i>
+			</buttton>
+
+			<!-- Tabla: ALUMNOS -->
+			<table class="table bordered striped highlight responsive-table">
+				<tr>
+					<td>
+						TDOCUME
+					</td>
+					<td>
+						TNOMBRE
+					</td>
+					<td>
+						TTELEFO
+					</td>
+					<td>
+						ACCIONES
+					</td>
+				</tr>
+				<tr ng-repeat="t in tutores">
+					<td>
+						{{t.t_docume}}
+					</td>
+					<td>
+						{{t.t_nombre}}
+					</td>
+					<td>
+						{{t.t_telefo}}
+					</td>
+					<td>
+						<button type="button" class="blue darken-4 white-text" style="border:0;" ng-click="visualizar(t.t_docume)">
+							<i class="icons ion-android-search"></i>
+						</button>
+						<button type="button" class="blue darken-4 white-text" style="border:0;" ng-click="modificar(t.t_docume)">
+							<i class="icons ion-android-create"></i>
+						</button>
+						<button type="button" class="red darken-4 white-text" style="border:0;" ng-click="eliminar(t.t_docume)">
+							<i class="icons ion-android-remove-circle"></i>
+						</button>
+					</td>
+				</tr>
+
+			</table>
+		</div>
+		<div class="card-action blue darken-3">
+			
+		</div>
+		
+	</div>
+</div>
+
+<!-- Formulario: Nuevo -->
+<div class="col s12 m12 l12" ng-show="formNuevoShow">
+	<div class="row">
+		<div class="col s10 m8 l6 offset-s1 offset-2 offset-l3">
+			<div class="card white z-depth-5">
+				<div class="card-action grey lighten-3 center">
+					<h5>
+						TUTORES | Nuevo
+					</h5>
+				</div>
+				<div class="card-action {{alertColor}} lighten-4 black-text">
+					{{alertText}}
+				</div>
+				<div class="card-content white black-text">
+
+
+					<!-- | t_docume | int(9)   | NO   | PRI | 0       |       |-->
+					<div class="input-field">
+						<input id="t_docume" type="number" maxlength="9" ng-model="t_docume" class="validate">
+						<label for="t_docume">Documento:</label>
+					</div>
+
+					<!-- | t_nombre | char(16) | NO   |     |         |       |-->
+					<div class="input-field">
+						<input id="t_nombre" type="text" maxlength="16" ng-model="t_nombre" class="validate">
+						<label for="t_nombre">Nombre:</label>
+					</div>
+
+					<!-- | t_domici | char(10) | YES  |     | NULL    |       |-->
+					<div class="input-field">
+						<input id="t_domici" type="text" maxlength="10" ng-model="t_domici" class="validate">
+						<label for="t_domici">Domicilio:</label>
+					</div>
+
+					<!-- | t_telefo | int(8)   | YES  |     | NULL    |       |-->
+					<div class="input-field">
+						<input id="t_telefo" type="number" maxlength="8" ng-model="t_telefo" class="validate">
+						<label for="t_telefo">Tel&eacute;fo:</label>
+					</div>
+
+					<!-- | u_codigo | int(5)   | YES  |     | 0       |       |-->
+					<div class="input-field">
+						<input id="u_codigo" type="number" maxlength="5" ng-model="u_codigo" class="validate">
+						<label for="u_codigo">C&oacute;digo:</label>
+					</div>
+
+					<!-- | t_barrio | char(10) | YES  |     | NULL    |       |-->
+					<div class="input-field">
+						<input id="t_barrio" type="text" maxlength="10" ng-model="t_barrio" class="validate">
+						<label for="t_barrio">Barrio:</label>
+					</div>
+
+					<!-- | t_cuil   | int(12)  | YES  |     | NULL    |       |-->
+					<div class="input-field">
+						<input id="t_cuil" type="number" maxlength="12" ng-model="t_cuil" class="validate">
+						<label for="t_cuil">N&uacute;mero de CUil:</label>
+					</div>
+
+					<!-- | t_nacion | char(6)  | YES  |     | NULL    |       |-->
+					<div class="input-field">
+						<input id="t_nacion" type="text" maxlength="6" ng-model="t_nacion" class="validate">
+						<label for="t_nacion">Nacionalidad:</label>
+					</div>
+
+					<!-- | t_nacimi | date     | YES  |     | NULL    |       |-->
+					<div class="input-field">
+						<input id="t_nacimi" type="date" ng-model="t_nacimi" class="validate">
+						<label for="t_nacimi">Fecha de Nacimiento:</label>
+					</div>
+
+					<!-- | t_celula | int(10)  | YES  |     | NULL    |       |-->
+					<div class="input-field">
+						<input id="t_celula" type="number" maxlength="10" ng-model="t_celula" class="validate">
+						<label for="t_celula">Celular:</label>
+					</div>
+
+					<!-- | t_telalt | int(10)  | YES  |     | NULL    |       |-->
+					<div class="input-field">
+						<input id="t_telalt" type="number" maxlength="10" ng-model="t_telalt" class="validate">
+						<label for="t_telalt">Otro Tel&eacute;fono:</label>
+					</div>
+
+					<!-- | t_ocupac | char(10) | YES  |     | NULL    |       |-->
+					<div class="input-field">
+						<input id="t_ocupac" type="text" maxlength="10" ng-model="t_ocupac" class="validate">
+						<label for="t_ocupac">Ocupaci&oacute;n:</label>
+					</div>
+
+					<!-- | t_dirtra | char(16) | YES  |     | NULL    |       |-->
+					<div class="input-field">
+						<input id="t_dirtra" type="text" maxlength="16" ng-model="t_dirtra" class="validate">
+						<label for="t_dirtra">Direcci&oacute;n del Trabajo:</label>
+					</div>
+
+					<!-- | t_teltra | int(10)  | YES  |     | NULL    |       |-->
+					<div class="input-field">
+						<input id="t_teltra" type="number" maxlength="10" ng-model="t_teltra" class="validate">
+						<label for="t_teltra">Tel&eacute;fono del Trabajo:</label>
+					</div>
+
+					<!-- | t_croqui | char(6)  | YES  |     | NULL    |       |-->
+					<div class="input-field">
+						<input id="t_croqui" type="text" maxlength="6" ng-model="t_croqui" class="validate">
+						<label for="t_croqui">Croqui:</label>
+					</div>
+
+			
+				</div>
+				<div class="card-action blue darken-3">
+					<buttton type="button" class="btn orange darken-4" ng-click="nuevoCancelar()">
+						Cancelar
+						<i class="icons ion-android-cancel right"></i>
+					</buttton>
+					<buttton type="button" class="btn orange darken-4" ng-click="nuevoAceptar()">
+						Aceptar
+						<i class="icons ion-android-send right"></i>
+					</buttton>			
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Formulario: Visualizar -->
+<div class="col s12 m12 l12" ng-show="formVisualizarShow">
+	<div class="row">
+		<div class="col s10 m8 l6 offset-s1 offset-2 offset-l3">
+			<div class="card white z-depth-5">
+				<div class="card-action grey lighten-3 center">
+					<h5>
+						TUTORES | Visualizar
+					</h5>
+				</div>
+				<div class="card-action {{alertColor}} lighten-4 black-text">
+					{{alertText}}
+				</div>
+				<div class="card-content white black-text">
+
+					<!-- | t_docume | int(9)   | NO   | PRI | 0       |       |-->
+					<label for="t_docume">Documento:</label>
+					<div class="input-field">
+						<input id="t_docume" type="number" maxlength="9" ng-model="t_docume" class="validate" readonly>
+					</div>
+
+					<!-- | t_nombre | char(16) | NO   |     |         |       |-->
+					<label for="t_nombre">Nombre:</label>
+					<div class="input-field">
+						<input id="t_nombre" type="text" maxlength="16" ng-model="t_nombre" class="validate" readonly>
+					</div>
+
+					<!-- | t_domici | char(10) | YES  |     | NULL    |       |-->
+					<label for="t_domici">Domicilio:</label>
+					<div class="input-field">
+						<input id="t_domici" type="text" maxlength="10" ng-model="t_domici" class="validate" readonly>
+					</div>
+
+					<!-- | t_telefo | int(8)   | YES  |     | NULL    |       |-->
+					<label for="t_telefo">Tel&eacute;fo:</label>
+					<div class="input-field">
+						<input id="t_telefo" type="number" maxlength="8" ng-model="t_telefo" class="validate" readonly>
+					</div>
+
+					<!-- | u_codigo | int(5)   | YES  |     | 0       |       |-->
+					<label for="u_codigo">C&oacute;digo:</label>
+					<div class="input-field">
+						<input id="u_codigo" type="number" maxlength="5" ng-model="u_codigo" class="validate" readonly>
+					</div>
+
+					<!-- | t_barrio | char(10) | YES  |     | NULL    |       |-->
+					<label for="t_barrio">Barrio:</label>
+					<div class="input-field">
+						<input id="t_barrio" type="text" maxlength="10" ng-model="t_barrio" class="validate" readonly>
+					</div>
+
+					<!-- | t_cuil   | int(12)  | YES  |     | NULL    |       |-->
+					<label for="t_cuil">N&uacute;mero de CUil:</label>
+					<div class="input-field">
+						<input id="t_cuil" type="number" maxlength="12" ng-model="t_cuil" class="validate" readonly>
+					</div>
+
+					<!-- | t_nacion | char(6)  | YES  |     | NULL    |       |-->
+					<label for="t_nacion">Nacionalidad:</label>
+					<div class="input-field">
+						<input id="t_nacion" type="text" maxlength="6" ng-model="t_nacion" class="validate" readonly>
+					</div>
+
+					<!-- | t_nacimi | date     | YES  |     | NULL    |       |-->
+					<label for="t_nacimi">Fecha de Nacimiento:</label>
+					<div class="input-field">
+						<input id="t_nacimi" type="date" ng-model="t_nacimi" class="validate" readonly>
+					</div>
+
+					<!-- | t_celula | int(10)  | YES  |     | NULL    |       |-->
+					<label for="t_celula">Celular:</label>
+					<div class="input-field">
+						<input id="t_celula" type="number" maxlength="10" ng-model="t_celula" class="validate" readonly>
+					</div>
+
+					<!-- | t_telalt | int(10)  | YES  |     | NULL    |       |-->
+					<label for="t_telalt">Otro Tel&eacute;fono:</label>
+					<div class="input-field">
+						<input id="t_telalt" type="number" maxlength="10" ng-model="t_telalt" class="validate" readonly>
+					</div>
+
+					<!-- | t_ocupac | char(10) | YES  |     | NULL    |       |-->
+					<label for="t_ocupac">Ocupaci&oacute;n:</label>
+					<div class="input-field">
+						<input id="t_ocupac" type="text" maxlength="10" ng-model="t_ocupac" class="validate" readonly>
+					</div>
+
+					<!-- | t_dirtra | char(16) | YES  |     | NULL    |       |-->
+					<label for="t_dirtra">Direcci&oacute;n del Trabajo:</label>
+					<div class="input-field">
+						<input id="t_dirtra" type="text" maxlength="16" ng-model="t_dirtra" class="validate" readonly>
+					</div>
+
+					<!-- | t_teltra | int(10)  | YES  |     | NULL    |       |-->
+					<label for="t_teltra">Tel&eacute;fono del Trabajo:</label>
+					<div class="input-field">
+						<input id="t_teltra" type="number" maxlength="10" ng-model="t_teltra" class="validate" readonly>
+					</div>
+
+					<!-- | t_croqui | char(6)  | YES  |     | NULL    |       |-->
+					<label for="t_croqui">Croqui:</label>
+					<div class="input-field">
+						<input id="t_croqui" type="text" maxlength="6" ng-model="t_croqui" class="validate" readonly>
+					</div>
+
+				</div>
+				<div class="card-action blue darken-3">
+					<buttton type="button" class="btn orange darken-4" ng-click="visualizarCancelar()">
+						Aceptar
+						<i class="icons ion-android-cancel right"></i>
+					</buttton>			
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Formulario: Modificar -->
+<div class="col s12 m12 l12" ng-show="formModificarShow">
+	<div class="row">
+		<div class="col s10 m8 l6 offset-s1 offset-2 offset-l3">
+			<div class="card white z-depth-5">
+				<div class="card-action grey lighten-3 center">
+					<h5>
+						ALUMNOS | Modificar
+					</h5>
+				</div>
+				<div class="card-action {{alertColor}} lighten-4 black-text">
+					{{alertText}}
+				</div>
+				<div class="card-content white black-text">
+
+					<!-- | t_docume | int(9)   | NO   | PRI | 0       |       |-->
+					<label for="t_docume">Documento:</label>
+					<div class="input-field">
+						<input id="t_docume" type="number" maxlength="9" ng-model="t_docume" class="validate" readonly>
+					</div>
+
+					<!-- | t_nombre | char(16) | NO   |     |         |       |-->
+					<label for="t_nombre">Nombre:</label>
+					<div class="input-field">
+						<input id="t_nombre" type="text" maxlength="16" ng-model="t_nombre" class="validate">
+					</div>
+
+					<!-- | t_domici | char(10) | YES  |     | NULL    |       |-->
+					<label for="t_domici">Domicilio:</label>
+					<div class="input-field">
+						<input id="t_domici" type="text" maxlength="10" ng-model="t_domici" class="validate">
+					</div>
+
+					<!-- | t_telefo | int(8)   | YES  |     | NULL    |       |-->
+					<label for="t_telefo">Tel&eacute;fo:</label>
+					<div class="input-field">
+						<input id="t_telefo" type="number" maxlength="8" ng-model="t_telefo" class="validate">
+					</div>
+
+					<!-- | u_codigo | int(5)   | YES  |     | 0       |       |-->
+					<label for="u_codigo">C&oacute;digo:</label>
+					<div class="input-field">
+						<input id="u_codigo" type="number" maxlength="5" ng-model="u_codigo" class="validate">
+					</div>
+
+					<!-- | t_barrio | char(10) | YES  |     | NULL    |       |-->
+					<label for="t_barrio">Barrio:</label>
+					<div class="input-field">
+						<input id="t_barrio" type="text" maxlength="10" ng-model="t_barrio" class="validate">
+					</div>
+
+					<!-- | t_cuil   | int(12)  | YES  |     | NULL    |       |-->
+					<label for="t_cuil">N&uacute;mero de CUil:</label>
+					<div class="input-field">
+						<input id="t_cuil" type="number" maxlength="12" ng-model="t_cuil" class="validate">
+					</div>
+
+					<!-- | t_nacion | char(6)  | YES  |     | NULL    |       |-->
+					<label for="t_nacion">Nacionalidad:</label>
+					<div class="input-field">
+						<input id="t_nacion" type="text" maxlength="6" ng-model="t_nacion" class="validate">
+					</div>
+
+					<!-- | t_nacimi | date     | YES  |     | NULL    |       |-->
+					<label for="t_nacimi">Fecha de Nacimiento:</label>
+					<div class="input-field">
+						<input id="t_nacimi" type="date" ng-model="t_nacimi" class="validate">
+					</div>
+
+					<!-- | t_celula | int(10)  | YES  |     | NULL    |       |-->
+					<label for="t_celula">Celular:</label>
+					<div class="input-field">
+						<input id="t_celula" type="number" maxlength="10" ng-model="t_celula" class="validate">
+					</div>
+
+					<!-- | t_telalt | int(10)  | YES  |     | NULL    |       |-->
+					<label for="t_telalt">Otro Tel&eacute;fono:</label>
+					<div class="input-field">
+						<input id="t_telalt" type="number" maxlength="10" ng-model="t_telalt" class="validate">
+					</div>
+
+					<!-- | t_ocupac | char(10) | YES  |     | NULL    |       |-->
+					<label for="t_ocupac">Ocupaci&oacute;n:</label>
+					<div class="input-field">
+						<input id="t_ocupac" type="text" maxlength="10" ng-model="t_ocupac" class="validate">
+					</div>
+
+					<!-- | t_dirtra | char(16) | YES  |     | NULL    |       |-->
+					<label for="t_dirtra">Direcci&oacute;n del Trabajo:</label>
+					<div class="input-field">
+						<input id="t_dirtra" type="text" maxlength="16" ng-model="t_dirtra" class="validate">
+					</div>
+
+					<!-- | t_teltra | int(10)  | YES  |     | NULL    |       |-->
+					<label for="t_teltra">Tel&eacute;fono del Trabajo:</label>
+					<div class="input-field">
+						<input id="t_teltra" type="number" maxlength="10" ng-model="t_teltra" class="validate">
+					</div>
+
+					<!-- | t_croqui | char(6)  | YES  |     | NULL    |       |-->
+					<label for="t_croqui">Croqui:</label>
+					<div class="input-field">
+						<input id="t_croqui" type="text" maxlength="6" ng-model="t_croqui" class="validate">
+					</div>
+
+				</div>
+				<div class="card-action blue darken-3">
+					<buttton type="button" class="btn orange darken-4" ng-click="modificarCancelar()">
+						Cancelar
+						<i class="icons ion-android-cancel right"></i>
+					</buttton>
+					<buttton type="button" class="btn orange darken-4" ng-click="modificarAceptar()">
+						Aceptar
+						<i class="icons ion-android-send right"></i>
+					</buttton>			
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

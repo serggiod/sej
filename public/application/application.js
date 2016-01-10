@@ -50,5 +50,13 @@ angular
 		    	templateUrl:'views/materias.html',
 		    	controller:'materias'
 		    })
+		    .when('/tutores',{
+		    	templateUrl:'views/tutores.html',
+		    	controller:'tutores'
+		    })
+		    .when('/usuarios',{
+		    	templateUrl:'views/usuarios.html',
+		    	controller:'usuarios'
+		    })
 		    .otherwise({redirectTo:'/login'});
 	});
