@@ -1,0 +1,570 @@
+<!-- Formulario: tabla-->
+<div class="col s12 m12 l12" ng-show="formTablaShow">
+	<div class="card white z-depth-3">
+
+		<!-- Titulo del formulario-->
+		<div class="card grey lighten-3">
+			<div class="card-action">
+				<h5 class="center">
+					DOCENTES | Lista
+				</h5>
+			</div>			
+		</div>
+		<div class="card-content white black-text">
+
+			<!-- Boton: Nueva Escuela -->
+			<buttton type="button" class="btn orange darken-4" ng-click="nuevo()">
+				Nuevo Docente
+				<i class="icons ion-android-add-circle right"></i>
+			</buttton>
+
+			<!-- Tabla: ALUMNOS -->
+			<table class="table bordered striped highlight responsive-table">
+				<tr>
+					<td>
+						DOCUMENTO
+					</td>
+					<td>
+						NOMBRE
+					</td>
+					<td>
+						TELEFONO
+					</td>
+					<td>
+						ACCIONES
+					</td>
+				</tr>
+				<tr ng-repeat="d in docentes">
+					<td>
+						{{d.d_docume}}
+					</td>
+					<td>
+						{{d.d_nombre}}
+					</td>
+					<td>
+						{{d.d_telefo}}
+					</td>
+					<td>
+						<button type="button" class="blue darken-4 white-text" style="border:0;" ng-click="visualizar(d.d_docume)">
+							<i class="icons ion-android-search"></i>
+						</button>
+						<button type="button" class="blue darken-4 white-text" style="border:0;" ng-click="modificar(d.d_docume)">
+							<i class="icons ion-android-create"></i>
+						</button>
+						<button type="button" class="red darken-4 white-text" style="border:0;" ng-click="eliminar(d.d_docume)">
+							<i class="icons ion-android-remove-circle"></i>
+						</button>
+					</td>
+				</tr>
+
+			</table>
+		</div>
+		<div class="card-action blue darken-3">
+			
+		</div>
+		
+	</div>
+</div>
+
+<!-- Formulario: Nuevo -->
+<div class="col s12 m12 l12" ng-show="formNuevoShow">
+	<div class="row">
+		<div class="col s10 m8 l6 offset-s1 offset-2 offset-l3">
+			<div class="card white z-depth-5">
+				<div class="card-action grey lighten-3 center">
+					<h5>
+						DOCENTES | Nuevo
+					</h5>
+				</div>
+				<div class="card-action {{alertColor}} lighten-4 black-text">
+					{{alertText}}
+				</div>
+				<div class="card-content white black-text">
+
+					<!-- | d_docume | int(9)     | NO   | PRI | 0       |       | -->
+					<div class="input-field">
+						<input id="d_docume" type="number" maxlength="9" ng-model="d_docume" class="validate">
+						<label for="d_docume">Documento:</label>
+					</div>
+
+					<!-- | d_nombre | char(16)   | NO   |     |         |       | -->
+					<div class="input-field">
+						<input id="d_nombre" type="text" maxlength="16" ng-model="d_nombre" class="validate">
+						<label for="d_nombre">Nombre:</label>
+					</div>
+
+					<!-- | d_domici | char(16)   | YES  |     | NULL    |       | -->
+					<div class="input-field">
+						<input id="d_domici" type="text" maxlength="16" ng-model="d_domici" class="validate">
+						<label for="d_domici">Domicilio:</label>
+					</div>
+
+					<!-- | d_telefo | int(7)     | YES  |     | NULL    |       | -->
+					<div class="input-field">
+						<input id="d_telefo" type="number" maxlength="7" ng-model="d_telefo" class="validate">
+						<label for="d_telefo">Telefono:</label>
+					</div>
+
+					<!-- | d_barrio | char(10)   | YES  |     | NULL    |       | -->
+					<div class="input-field">
+						<input id="d_barrio" type="text" maxlength="10" ng-model="d_barrio" class="validate">
+						<label for="d_barrio">Barrio:</label>
+					</div>
+
+					<!-- | d_cuil   | int(12)    | YES  |     | NULL    |       | -->
+					<div class="input-field">
+						<input id="d_cuil" type="number" maxlength="12" ng-model="d_cuil" class="validate">
+						<label for="d_cuil">Cuil:</label>
+					</div>
+
+					<!-- | d_nacion | char(6)    | YES  |     | NULL    |       | -->
+					<div class="input-field">
+						<input id="d_nacion" type="text" maxlength="6" ng-model="d_nacion" class="validate">
+						<label for="d_nacion">Nacionalidad:</label>
+					</div>
+
+					<!-- | d_nacimi | date       | YES  |     | NULL    |       | -->
+					<div class="input-field">
+						<input id="d_nacimi" type="date" ng-model="d_nacimi" class="validate">
+						<label for="d_nacimi">Nacimiento:</label>
+					</div>
+
+					<!-- | d_celula | int(10)    | YES  |     | NULL    |       | -->
+					<div class="input-field">
+						<input id="d_celula" type="number" maxlength="10" ng-model="d_celula" class="validate">
+						<label for="d_celula">Celular:</label>
+					</div>
+
+					<!-- | d_titulo | char(6)    | YES  |     | NULL    |       | -->
+					<div class="input-field">
+						<input id="d_titulo" type="text" maxlength="6" ng-model="d_titulo" class="validate">
+						<label for="d_titulo">Titulo:</label>
+					</div>
+
+					<!-- | u_codigo | int(5)     | YES  |     | NULL    |       | -->
+					<div class="input-field">
+						<input id="u_codigo" type="number" maxlength="5" ng-model="u_codigo" class="validate">
+						<label for="u_codigo">Codigo:</label>
+					</div>
+
+					<!-- | d_ecivil | char(5)    | YES  |     | NULL    |       | -->
+					<div class="input-field">
+						<input id="d_ecivil" type="text" maxlength="5" ng-model="d_ecivil" class="validate">
+						<label for="d_ecivil">Estado Civil:</label>
+					</div>
+
+					<!-- | d_decjur | tinyint(4) | YES  |     | NULL    |       | -->
+					<div class="input-field">
+						<input id="d_decjur" type="number" maxlength="4" ng-model="d_decjur" class="validate">
+						<label for="d_decjur">Declaraci&oacute;n Jurada:</label>
+					</div>
+
+					<!-- | d_copnac | char(6)    | YES  |     | NULL    |       | -->
+					<div class="input-field">
+						<input id="d_copnac" type="text" maxlength="6" ng-model="d_copnac" class="validate">
+						<label for="d_copnac">Cop Nac:</label>
+					</div>
+
+					<!-- | d_copdni | char(6)    | YES  |     | NULL    |       | -->
+					<div class="input-field">
+						<input id="d_copdni" type="text" maxlength="6" ng-model="d_copdni" class="validate">
+						<label for="d_copdni">Cop Dni:</label>
+					</div>
+
+					<!-- | d_coppla | char(6)    | YES  |     | NULL    |       | -->
+					<div class="input-field">
+						<input id="d_coppla" type="text" maxlength="6" ng-model="d_coppla" class="validate">
+						<label for="d_coppla">Cop Pla:</label>
+					</div>
+
+					<!-- | d_copleg | char(6)    | YES  |     | NULL    |       | -->
+					<div class="input-field">
+						<input id="d_copleg" type="text" maxlength="6" ng-model="d_copleg" class="validate">
+						<label for="d_copleg">Cop Leg:</label>
+					</div>
+
+					<!-- | d_copper | char(6)    | YES  |     | NULL    |       | -->
+					<div class="input-field">
+						<input id="d_copper" type="text" maxlength="6" ng-model="d_copper" class="validate">
+						<label for="d_copper">Cop Per:</label>
+					</div>
+
+					<!-- | d_copdap | char(6)    | YES  |     | NULL    |       | -->
+					<div class="input-field">
+						<input id="d_copdap" type="text" maxlength="6" ng-model="d_copdap" class="validate">
+						<label for="d_copdap">Cop Dap:</label>
+					</div>
+
+					<!-- | d_copcse | char(6)    | YES  |     | NULL    |       | -->
+					<div class="input-field">
+						<input id="d_copcse" type="text" maxlength="6" ng-model="d_copcse" class="validate">
+						<label for="d_copcse">Cop Cse:</label>
+					</div>
+
+					<!-- | d_copcui | char(6)    | YES  |     | NULL    |       | -->
+					<div class="input-field">
+						<input id="d_copcui" type="text" maxlength="6" ng-model="d_copcui" class="validate">
+						<label for="d_copcui">Cop Cui:</label>
+					</div>
+
+					<!-- | d_copsou | char(6)    | YES  |     | NULL    |       | -->
+					<div class="input-field">
+						<input id="d_copsou" type="text" maxlength="6" ng-model="d_copsou" class="validate">
+						<label for="d_copsou">Cop Sou:</label>
+					</div>
+
+					<!-- | d_croqui | char(6)    | YES  |     | NULL    |       | -->
+					<div class="input-field">
+						<input id="d_croqui" type="text" maxlength="6" ng-model="d_croqui" class="validate">
+						<label for="d_croqui">Croqui:</label>
+					</div>
+			
+				</div>
+				<div class="card-action blue darken-3">
+					<buttton type="button" class="btn orange darken-4" ng-click="nuevoCancelar()">
+						Cancelar
+						<i class="icons ion-android-cancel right"></i>
+					</buttton>
+					<buttton type="button" class="btn orange darken-4" ng-click="nuevoAceptar()">
+						Aceptar
+						<i class="icons ion-android-send right"></i>
+					</buttton>			
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Formulario: Visualizar -->
+<div class="col s12 m12 l12" ng-show="formVisualizarShow">
+	<div class="row">
+		<div class="col s10 m8 l6 offset-s1 offset-2 offset-l3">
+			<div class="card white z-depth-5">
+				<div class="card-action grey lighten-3 center">
+					<h5>
+						DOCENTES | Visualizar
+					</h5>
+				</div>
+				<div class="card-action {{alertColor}} lighten-4 black-text">
+					{{alertText}}
+				</div>
+				<div class="card-content white black-text">
+
+					<!-- | d_docume | int(9)     | NO   | PRI | 0       |       | -->
+					<label for="d_docume">Documento:</label>
+					<div class="input-field">
+						<input id="d_docume" type="number" maxlength="9" ng-model="d_docume" class="validate" readonly>
+					</div>
+
+					<!-- | d_nombre | char(16)   | NO   |     |         |       | -->
+					<label for="d_nombre">Nombre:</label>
+					<div class="input-field">
+						<input id="d_nombre" type="text" maxlength="16" ng-model="d_nombre" class="validate" readonly>
+					</div>
+
+					<!-- | d_domici | char(16)   | YES  |     | NULL    |       | -->
+					<label for="d_domici">Domicilio:</label>
+					<div class="input-field">
+						<input id="d_domici" type="text" maxlength="16" ng-model="d_domici" class="validate" readonly>
+					</div>
+
+					<!-- | d_telefo | int(7)     | YES  |     | NULL    |       | -->
+					<label for="d_telefo">Telefono:</label>
+					<div class="input-field">
+						<input id="d_telefo" type="number" maxlength="7" ng-model="d_telefo" class="validate" readonly>
+					</div>
+
+					<!-- | d_barrio | char(10)   | YES  |     | NULL    |       | -->
+					<label for="d_barrio">Barrio:</label>
+					<div class="input-field">
+						<input id="d_barrio" type="text" maxlength="10" ng-model="d_barrio" class="validate" readonly>
+					</div>
+
+					<!-- | d_cuil   | int(12)    | YES  |     | NULL    |       | -->
+					<label for="d_cuil">Cuil:</label>
+					<div class="input-field">
+						<input id="d_cuil" type="number" maxlength="12" ng-model="d_cuil" class="validate" readonly>
+					</div>
+
+					<!-- | d_nacion | char(6)    | YES  |     | NULL    |       | -->
+					<label for="d_nacion">Nacionalidad:</label>
+					<div class="input-field">
+						<input id="d_nacion" type="text" maxlength="6" ng-model="d_nacion" class="validate" readonly>
+					</div>
+
+					<!-- | d_nacimi | date       | YES  |     | NULL    |       | -->
+					<label for="d_nacimi">Nacimiento:</label>
+					<div class="input-field">
+						<input id="d_nacimi" type="date" ng-model="d_nacimi" class="validate" readonly>
+					</div>
+
+					<!-- | d_celula | int(10)    | YES  |     | NULL    |       | -->
+					<label for="d_celula">Celular:</label>
+					<div class="input-field">
+						<input id="d_celula" type="number" maxlength="10" ng-model="d_celula" class="validate" readonly>
+					</div>
+
+					<!-- | d_titulo | char(6)    | YES  |     | NULL    |       | -->
+					<label for="d_titulo">Titulo:</label>
+					<div class="input-field">
+						<input id="d_titulo" type="text" maxlength="6" ng-model="d_titulo" class="validate" readonly>
+					</div>
+
+					<!-- | u_codigo | int(5)     | YES  |     | NULL    |       | -->
+					<label for="u_codigo">Codigo:</label>
+					<div class="input-field">
+						<input id="u_codigo" type="number" maxlength="5" ng-model="u_codigo" class="validate" readonly>
+					</div>
+
+					<!-- | d_ecivil | char(5)    | YES  |     | NULL    |       | -->
+					<label for="d_ecivil">Estado Civil:</label>
+					<div class="input-field">
+						<input id="d_ecivil" type="text" maxlength="5" ng-model="d_ecivil" class="validate" readonly>
+					</div>
+
+					<!-- | d_decjur | tinyint(4) | YES  |     | NULL    |       | -->
+					<label for="d_decjur">Declaraci&oacute;n Jurada:</label>
+					<div class="input-field">
+						<input id="d_decjur" type="number" maxlength="4" ng-model="d_decjur" class="validate" readonly>
+					</div>
+
+					<!-- | d_copnac | char(6)    | YES  |     | NULL    |       | -->
+					<label for="d_copnac">Cop Nac:</label>
+					<div class="input-field">
+						<input id="d_copnac" type="text" maxlength="6" ng-model="d_copnac" class="validate" readonly>
+					</div>
+
+					<!-- | d_copdni | char(6)    | YES  |     | NULL    |       | -->
+					<label for="d_copdni">Cop Dni:</label>
+					<div class="input-field">
+						<input id="d_copdni" type="text" maxlength="6" ng-model="d_copdni" class="validate" readonly>
+					</div>
+
+					<!-- | d_coppla | char(6)    | YES  |     | NULL    |       | -->
+					<label for="d_coppla">Cop Pla:</label>
+					<div class="input-field">
+						<input id="d_coppla" type="text" maxlength="6" ng-model="d_coppla" class="validate" readonly>
+					</div>
+
+					<!-- | d_copleg | char(6)    | YES  |     | NULL    |       | -->
+					<label for="d_copleg">Cop Leg:</label>
+					<div class="input-field">
+						<input id="d_copleg" type="text" maxlength="6" ng-model="d_copleg" class="validate" readonly>
+					</div>
+
+					<!-- | d_copper | char(6)    | YES  |     | NULL    |       | -->
+					<label for="d_copper">Cop Per:</label>
+					<div class="input-field">
+						<input id="d_copper" type="text" maxlength="6" ng-model="d_copper" class="validate" readonly>
+					</div>
+
+					<!-- | d_copdap | char(6)    | YES  |     | NULL    |       | -->
+					<label for="d_copdap">Cop Dap:</label>
+					<div class="input-field">
+						<input id="d_copdap" type="text" maxlength="6" ng-model="d_copdap" class="validate" readonly>
+					</div>
+
+					<!-- | d_copcse | char(6)    | YES  |     | NULL    |       | -->
+					<label for="d_copcse">Cop Cse:</label>
+					<div class="input-field">
+						<input id="d_copcse" type="text" maxlength="6" ng-model="d_copcse" class="validate" readonly>
+					</div>
+
+					<!-- | d_copcui | char(6)    | YES  |     | NULL    |       | -->
+					<label for="d_copcui">Cop Cui:</label>
+					<div class="input-field">
+						<input id="d_copcui" type="text" maxlength="6" ng-model="d_copcui" class="validate" readonly>
+					</div>
+
+					<!-- | d_copsou | char(6)    | YES  |     | NULL    |       | -->
+					<label for="d_copsou">Cop Sou:</label>
+					<div class="input-field">
+						<input id="d_copsou" type="text" maxlength="6" ng-model="d_copsou" class="validate" readonly>
+					</div>
+
+					<!-- | d_croqui | char(6)    | YES  |     | NULL    |       | -->
+					<label for="d_croqui">Croqui:</label>
+					<div class="input-field">
+						<input id="d_croqui" type="text" maxlength="6" ng-model="d_croqui" class="validate" readonly>
+					</div>
+
+				</div>
+				<div class="card-action blue darken-3">
+					<buttton type="button" class="btn orange darken-4" ng-click="visualizarCancelar()">
+						Aceptar
+						<i class="icons ion-android-cancel right"></i>
+					</buttton>			
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Formulario: Modificar -->
+<div class="col s12 m12 l12" ng-show="formModificarShow">
+	<div class="row">
+		<div class="col s10 m8 l6 offset-s1 offset-2 offset-l3">
+			<div class="card white z-depth-5">
+				<div class="card-action grey lighten-3 center">
+					<h5>
+						DOCENTES | Modificar
+					</h5>
+				</div>
+				<div class="card-action {{alertColor}} lighten-4 black-text">
+					{{alertText}}
+				</div>
+				<div class="card-content white black-text">
+
+					<!-- | d_docume | int(9)     | NO   | PRI | 0       |       | -->
+					<label for="d_docume">Documento:</label>
+					<div class="input-field">
+						<input id="d_docume" type="number" maxlength="9" ng-model="d_docume" class="validate" readonly>
+					</div>
+
+					<!-- | d_nombre | char(16)   | NO   |     |         |       | -->
+					<label for="d_nombre">Nombre:</label>
+					<div class="input-field">
+						<input id="d_nombre" type="text" maxlength="16" ng-model="d_nombre" class="validate">
+					</div>
+
+					<!-- | d_domici | char(16)   | YES  |     | NULL    |       | -->
+					<label for="d_domici">Domicilio:</label>
+					<div class="input-field">
+						<input id="d_domici" type="text" maxlength="16" ng-model="d_domici" class="validate">
+					</div>
+
+					<!-- | d_telefo | int(7)     | YES  |     | NULL    |       | -->
+					<label for="d_telefo">Telefono:</label>
+					<div class="input-field">
+						<input id="d_telefo" type="number" maxlength="7" ng-model="d_telefo" class="validate">
+					</div>
+
+					<!-- | d_barrio | char(10)   | YES  |     | NULL    |       | -->
+					<label for="d_barrio">Barrio:</label>
+					<div class="input-field">
+						<input id="d_barrio" type="text" maxlength="10" ng-model="d_barrio" class="validate">
+					</div>
+
+					<!-- | d_cuil   | int(12)    | YES  |     | NULL    |       | -->
+					<label for="d_cuil">Cuil:</label>
+					<div class="input-field">
+						<input id="d_cuil" type="number" maxlength="12" ng-model="d_cuil" class="validate">
+					</div>
+
+					<!-- | d_nacion | char(6)    | YES  |     | NULL    |       | -->
+					<label for="d_nacion">Nacionalidad:</label>
+					<div class="input-field">
+						<input id="d_nacion" type="text" maxlength="6" ng-model="d_nacion" class="validate">
+					</div>
+
+					<!-- | d_nacimi | date       | YES  |     | NULL    |       | -->
+					<label for="d_nacimi">Nacimiento:</label>
+					<div class="input-field">
+						<input id="d_nacimi" type="date" ng-model="d_nacimi" class="validate">
+					</div>
+
+					<!-- | d_celula | int(10)    | YES  |     | NULL    |       | -->
+					<label for="d_celula">Celular:</label>
+					<div class="input-field">
+						<input id="d_celula" type="number" maxlength="10" ng-model="d_celula" class="validate">
+					</div>
+
+					<!-- | d_titulo | char(6)    | YES  |     | NULL    |       | -->
+					<label for="d_titulo">Titulo:</label>
+					<div class="input-field">
+						<input id="d_titulo" type="text" maxlength="6" ng-model="d_titulo" class="validate">
+					</div>
+
+					<!-- | u_codigo | int(5)     | YES  |     | NULL    |       | -->
+					<label for="u_codigo">Codigo:</label>
+					<div class="input-field">
+						<input id="u_codigo" type="number" maxlength="5" ng-model="u_codigo" class="validate">
+					</div>
+
+					<!-- | d_ecivil | char(5)    | YES  |     | NULL    |       | -->
+					<label for="d_ecivil">Estado Civil:</label>
+					<div class="input-field">
+						<input id="d_ecivil" type="text" maxlength="5" ng-model="d_ecivil" class="validate">
+					</div>
+
+					<!-- | d_decjur | tinyint(4) | YES  |     | NULL    |       | -->
+					<label for="d_decjur">Declaraci&oacute;n Jurada:</label>
+					<div class="input-field">
+						<input id="d_decjur" type="number" maxlength="4" ng-model="d_decjur" class="validate">
+					</div>
+
+					<!-- | d_copnac | char(6)    | YES  |     | NULL    |       | -->
+					<label for="d_copnac">Cop Nac:</label>
+					<div class="input-field">
+						<input id="d_copnac" type="text" maxlength="6" ng-model="d_copnac" class="validate">
+					</div>
+
+					<!-- | d_copdni | char(6)    | YES  |     | NULL    |       | -->
+					<label for="d_copdni">Cop Dni:</label>
+					<div class="input-field">
+						<input id="d_copdni" type="text" maxlength="6" ng-model="d_copdni" class="validate">
+					</div>
+
+					<!-- | d_coppla | char(6)    | YES  |     | NULL    |       | -->
+					<label for="d_coppla">Cop Pla:</label>
+					<div class="input-field">
+						<input id="d_coppla" type="text" maxlength="6" ng-model="d_coppla" class="validate">
+					</div>
+
+					<!-- | d_copleg | char(6)    | YES  |     | NULL    |       | -->
+					<label for="d_copleg">Cop Leg:</label>
+					<div class="input-field">
+						<input id="d_copleg" type="text" maxlength="6" ng-model="d_copleg" class="validate">
+					</div>
+
+					<!-- | d_copper | char(6)    | YES  |     | NULL    |       | -->
+					<label for="d_copper">Cop Per:</label>
+					<div class="input-field">
+						<input id="d_copper" type="text" maxlength="6" ng-model="d_copper" class="validate">
+					</div>
+
+					<!-- | d_copdap | char(6)    | YES  |     | NULL    |       | -->
+					<label for="d_copdap">Cop Dap:</label>
+					<div class="input-field">
+						<input id="d_copdap" type="text" maxlength="6" ng-model="d_copdap" class="validate">
+					</div>
+
+					<!-- | d_copcse | char(6)    | YES  |     | NULL    |       | -->
+					<label for="d_copcse">Cop Cse:</label>
+					<div class="input-field">
+						<input id="d_copcse" type="text" maxlength="6" ng-model="d_copcse" class="validate">
+					</div>
+
+					<!-- | d_copcui | char(6)    | YES  |     | NULL    |       | -->
+					<label for="d_copcui">Cop Cui:</label>
+					<div class="input-field">
+						<input id="d_copcui" type="text" maxlength="6" ng-model="d_copcui" class="validate">
+					</div>
+
+					<!-- | d_copsou | char(6)    | YES  |     | NULL    |       | -->
+					<label for="d_copsou">Cop Sou:</label>
+					<div class="input-field">
+						<input id="d_copsou" type="text" maxlength="6" ng-model="d_copsou" class="validate">
+					</div>
+
+					<!-- | d_croqui | char(6)    | YES  |     | NULL    |       | -->
+					<label for="d_croqui">Croqui:</label>
+					<div class="input-field">
+						<input id="d_croqui" type="text" maxlength="6" ng-model="d_croqui" class="validate">
+					</div>
+
+				</div>
+				<div class="card-action blue darken-3">
+					<buttton type="button" class="btn orange darken-4" ng-click="modificarCancelar()">
+						Cancelar
+						<i class="icons ion-android-cancel right"></i>
+					</buttton>
+					<buttton type="button" class="btn orange darken-4" ng-click="modificarAceptar()">
+						Aceptar
+						<i class="icons ion-android-send right"></i>
+					</buttton>			
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
