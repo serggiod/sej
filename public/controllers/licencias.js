@@ -15,6 +15,7 @@ angular
 		};
 
 		$scope.formsHide = function(){
+			date = new Date();
 			$scope.formTablaShow = false;
 			$scope.formNuevoShow = false;
 			$scope.formVisualizarShow = false;
@@ -22,8 +23,12 @@ angular
 			$scope.l_numero = '';
 			$scope.d_docume = '';
 			$scope.l_causa  = '';
-			$scope.l_desde  = '';
-			$scope.l_hasta  = '';
+			$scope.l_desded  = parseInt(date.getDate());
+			$scope.l_desdem  = parseInt(date.getMonth() +1);
+			$scope.l_desdeY  = parseInt(date.getFullYear());
+			$scope.l_hastad  = parseInt(date.getDate());
+			$scope.l_hastam  = parseInt(date.getMonth() +1);
+			$scope.l_hastaY  = parseInt(date.getFullYear());
 			$scope.alertColor = 'green';
 			$scope.alertText  = 'Complete el siguiente formulario.';
 		};
@@ -43,8 +48,8 @@ angular
 					l_numero : $scope.l_numero,
 					d_docume : $scope.d_docume,
 					l_causa  : $scope.l_causa ,
-					l_desde  : $scope.l_desde ,
-					l_hasta  : $scope.l_hasta
+					l_desde  : $scope.l_desdeY+'-'+$scope.l_desdem+'-'+$scope.l_desded ,
+					l_hasta  : $scope.l_hastaY+'-'+$scope.l_hastam+'-'+$scope.l_hastad
 				};
 				$http.post('models/licencia.post.php',json)
 					.success(function(json){
@@ -74,11 +79,17 @@ angular
 			$session.autorize(function(){
 				$http.get('models/licencia.get.php?l_numero='+l_numero)
 					.success(function(json){
+						l_desde = json.l_desde.split('-');
+						l_hasta = json.l_hasta.split('-');
 						$scope.l_numero = parseInt(json.l_numero);
 						$scope.d_docume = parseInt(json.d_docume);
 						$scope.l_causa  = json.l_causa;
-						$scope.l_desde  = json.l_desde;
-						$scope.l_hasta  = json.l_hasta;
+						$scope.l_desded  = parseInt(l_desde[2]);
+						$scope.l_desdem  = parseInt(l_desde[1]);
+						$scope.l_desdeY  = parseInt(l_desde[0]);
+						$scope.l_hastad  = parseInt(l_hasta[2]);
+						$scope.l_hastam  = parseInt(l_hasta[1]);
+						$scope.l_hastaY  = parseInt(l_hasta[0]);
 						$scope.alertColor = 'blue';
 						$scope.alertText  = 'Visualizando información de un registro.';
 						$scope.formVisualizarShow = true;
@@ -100,11 +111,17 @@ angular
 				$session.autorize(function(){
 					$http.get('models/licencia.get.php?l_numero='+l_numero)
 						.success(function(json){
+							l_desde = json.l_desde.split('-');
+							l_hasta = json.l_hasta.split('-');
 							$scope.l_numero = parseInt(json.l_numero);
 							$scope.d_docume = parseInt(json.d_docume);
 							$scope.l_causa  = json.l_causa;
-							$scope.l_desde  = json.l_desde;
-							$scope.l_hasta  = json.l_hasta;
+							$scope.l_desded  = parseInt(l_desde[2]);
+							$scope.l_desdem  = parseInt(l_desde[1]);
+							$scope.l_desdeY  = parseInt(l_desde[0]);
+							$scope.l_hastad  = parseInt(l_hasta[2]);
+							$scope.l_hastam  = parseInt(l_hasta[1]);
+							$scope.l_hastaY  = parseInt(l_hasta[0]);
 							$scope.alertColor = 'yellow';
 							$scope.alertText  = 'Modificando información de un registro.';
 							$scope.formModificarShow = true;
@@ -125,8 +142,8 @@ angular
 					l_numero : $scope.l_numero,
 					d_docume : $scope.d_docume,
 					l_causa  : $scope.l_causa ,
-					l_desde  : $scope.l_desde ,
-					l_hasta  : $scope.l_hasta
+					l_desde  : $scope.l_desdeY+'-'+$scope.l_desdem+'-'+$scope.l_desded ,
+					l_hasta  : $scope.l_hastaY+'-'+$scope.l_hastam+'-'+$scope.l_hastad
 				};
 				$http.put('models/licencia.put.php',json)
 					.success(function(json){

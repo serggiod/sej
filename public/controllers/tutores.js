@@ -27,7 +27,9 @@ angular
 			$scope.t_barrio = '';
 			$scope.t_cuil   = '';
 			$scope.t_nacion = '';
-			$scope.t_nacimi = '';
+			$scope.t_nacimid = 1;
+			$scope.t_nacimim = 1;
+			$scope.t_nacimiY = 1990;
 			$scope.t_celula = '';
 			$scope.t_telalt = '';
 			$scope.t_ocupac = '';
@@ -58,7 +60,7 @@ angular
 					t_barrio:$scope.t_barrio,
 					t_cuil  :$scope.t_cuil  ,
 					t_nacion:$scope.t_nacion,
-					t_nacimi:$scope.t_nacimi,
+					t_nacimi:$scope.t_nacimiY+'-'+$scope.t_nacimim+'-'+$scope.t_nacimid,
 					t_celula:$scope.t_celula,
 					t_telalt:$scope.t_telalt,
 					t_ocupac:$scope.t_ocupac,
@@ -94,6 +96,7 @@ angular
 			$session.autorize(function(){
 				$http.get('models/tutor.get.php?t_docume='+t_docume)
 					.success(function(json){
+						t_nacimi = json.t_nacimi.split('-');
 						$scope.t_docume = parseInt(json.t_docume);
 						$scope.t_nombre = json.t_nombre;
 						$scope.t_domici = json.t_domici;
@@ -102,7 +105,9 @@ angular
 						$scope.t_barrio = json.t_barrio;
 						$scope.t_cuil   = parseInt(json.t_cuil)  ;
 						$scope.t_nacion = json.t_nacion;
-						$scope.t_nacimi = json.t_nacimi;
+						$scope.t_nacimid = parseInt(t_nacimi[2]);
+						$scope.t_nacimim = parseInt(t_nacimi[1]);
+						$scope.t_nacimiY = parseInt(t_nacimi[0]);
 						$scope.t_celula = parseInt(json.t_celula);
 						$scope.t_telalt = parseInt(json.t_telalt);
 						$scope.t_ocupac = json.t_ocupac;
@@ -130,6 +135,7 @@ angular
 				$session.autorize(function(){
 					$http.get('models/tutor.get.php?t_docume='+t_docume)
 						.success(function(json){
+							t_nacimi = json.t_nacimi.split('-');
 							$scope.t_docume = parseInt(json.t_docume);
 							$scope.t_nombre = json.t_nombre;
 							$scope.t_domici = json.t_domici;
@@ -138,7 +144,9 @@ angular
 							$scope.t_barrio = json.t_barrio;
 							$scope.t_cuil   = parseInt(json.t_cuil)  ;
 							$scope.t_nacion = json.t_nacion;
-							$scope.t_nacimi = json.t_nacimi;
+							$scope.t_nacimid = parseInt(t_nacimi[2]);
+							$scope.t_nacimim = parseInt(t_nacimi[1]);
+							$scope.t_nacimiY = parseInt(t_nacimi[0]);
 							$scope.t_celula = parseInt(json.t_celula);
 							$scope.t_telalt = parseInt(json.t_telalt);
 							$scope.t_ocupac = json.t_ocupac;
@@ -170,7 +178,7 @@ angular
 					t_barrio:$scope.t_barrio,
 					t_cuil  :$scope.t_cuil  ,
 					t_nacion:$scope.t_nacion,
-					t_nacimi:$scope.t_nacimi,
+					t_nacimi:$scope.t_nacimiY+'-'+$scope.t_nacimim+'-'+$scope.t_nacimid,
 					t_celula:$scope.t_celula,
 					t_telalt:$scope.t_telalt,
 					t_ocupac:$scope.t_ocupac,

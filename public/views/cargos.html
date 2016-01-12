@@ -101,9 +101,15 @@
 					</div>
 
 					<!--| dc_alta  | date    | YES  |     | NULL    |       |-->
+					<label for="dc_alta">Alta:</label>
 					<div class="input-field">
-						<input id="dc_alta" type="date" ng-model="dc_alta" class="validate">
-						<label for="dc_alta">Alta:</label>
+						<fieldset id="dc_alta" class="validate" style="clear:both;">
+							<input type="number" min="1" max="31" ng-model="dc_altad" style="width:90px;">
+							<span style="width:50px;">/</span>
+							<input type="number" min="1" max="12" ng-model="dc_altam" style="width:90px;">
+							<span style="width:50px;">/</span>
+							<input type="number" min="1950" max="3000" ng-model="dc_altaY" style="width:90px;">
+						</fieldset>
 					</div>
 
 					<!--| dc_hora  | int(11) | YES  |     | NULL    |       |-->
@@ -119,9 +125,15 @@
 					</div>
 
 					<!--| dc_baja  | date    | YES  |     | NULL    |       |-->
+					<label for="dc_baja">Baja:</label>
 					<div class="input-field">
-						<input id="dc_baja" type="date" ng-model="dc_baja" class="validate">
-						<label for="dc_baja">Baja:</label>
+						<fieldset id="dc_baja" class="validate" style="clear:both;">
+							<input type="number" min="1" max="31" ng-model="dc_bajad" style="width:90px;">
+							<span style="width:50px;">/</span>
+							<input type="number" min="1" max="12" ng-model="dc_bajam" style="width:90px;">
+							<span style="width:50px;">/</span>
+							<input type="number" min="1950" max="3000" ng-model="dc_bajaY" style="width:90px;">
+						</fieldset>
 					</div>
 
 					<!--| dc_causa | char(6) | YES  |     | NULL    |       |-->
@@ -169,11 +181,10 @@
 					</div>
 
 					<!-- | e_numero | int(3)  | NO   |     | 0       |       |-->
-						<label for="e_numero">Numero:</label>
 					<div class="input-field">
 						<input id="e_numero" type="number" maxlength="3" ng-model="e_numero" readonly class="validate">
-
-					</div>
+						<label for="e_numero">Numero:</label>
+					</div>					
 
 					<!--| dc_cargo | char(6) | YES  |     | NULL    |       |-->
 						<label for="dc_cargo">Cargo:</label>
@@ -183,10 +194,15 @@
 					</div>
 
 					<!--| dc_alta  | date    | YES  |     | NULL    |       |-->
-						<label for="dc_alta">Alta:</label>
+					<label for="dc_alta">Alta:</label>
 					<div class="input-field">
-						<input id="dc_alta" type="date" ng-model="dc_alta" readonly class="validate">
-
+						<fieldset id="dc_alta" class="validate" style="clear:both;">
+							<input type="number" min="1" max="31" ng-model="dc_altad" style="width:90px;" readonly>
+							<span style="width:50px;">/</span>
+							<input type="number" min="1" max="12" ng-model="dc_altam" style="width:90px;" readonly>
+							<span style="width:50px;">/</span>
+							<input type="number" min="1950" max="3000" ng-model="dc_altaY" style="width:90px;" readonly>
+						</fieldset>
 					</div>
 
 					<!--| dc_hora  | int(11) | YES  |     | NULL    |       |-->
@@ -204,10 +220,15 @@
 					</div>
 
 					<!--| dc_baja  | date    | YES  |     | NULL    |       |-->
-						<label for="dc_baja">Baja:</label>
+					<label for="dc_baja">Baja:</label>
 					<div class="input-field">
-						<input id="dc_baja" type="date" ng-model="dc_baja" readonly class="validate">
-
+						<fieldset id="dc_baja" class="validate" style="clear:both;">
+							<input type="number" min="1" max="31" ng-model="dc_bajad" style="width:90px;" readonly>
+							<span style="width:50px;">/</span>
+							<input type="number" min="1" max="12" ng-model="dc_bajam" style="width:90px;" readonly>
+							<span style="width:50px;">/</span>
+							<input type="number" min="1950" max="3000" ng-model="dc_bajaY" style="width:90px;" readonly>
+						</fieldset>
 					</div>
 
 					<!--| dc_causa | char(6) | YES  |     | NULL    |       |-->
@@ -252,11 +273,10 @@
 					</div>
 
 					<!-- | e_numero | int(3)  | NO   |     | 0       |       |-->
-						<label for="e_numero">Numero:</label>
 					<div class="input-field">
 						<input id="e_numero" type="number" maxlength="3" ng-model="e_numero" class="validate">
-
-					</div>
+						<label for="e_numero">Numero:</label>
+					</div>					
 
 					<!--| dc_cargo | char(6) | YES  |     | NULL    |       |-->
 						<label for="dc_cargo">Cargo:</label>
@@ -266,10 +286,15 @@
 					</div>
 
 					<!--| dc_alta  | date    | YES  |     | NULL    |       |-->
-						<label for="dc_alta">Alta:</label>
+					<label for="dc_alta">Alta:</label>
 					<div class="input-field">
-						<input id="dc_alta" type="date" ng-model="dc_alta" class="validate">
-
+						<fieldset id="dc_alta" class="validate" style="clear:both;">
+							<input type="number" min="1" max="31" ng-model="dc_altad" style="width:90px;">
+							<span style="width:50px;">/</span>
+							<input type="number" min="1" max="12" ng-model="dc_altam" style="width:90px;">
+							<span style="width:50px;">/</span>
+							<input type="number" min="1950" max="3000" ng-model="dc_altaY" style="width:90px;">
+						</fieldset>
 					</div>
 
 					<!--| dc_hora  | int(11) | YES  |     | NULL    |       |-->
@@ -287,10 +312,15 @@
 					</div>
 
 					<!--| dc_baja  | date    | YES  |     | NULL    |       |-->
-						<label for="dc_baja">Baja:</label>
+					<label for="dc_baja">Baja:</label>
 					<div class="input-field">
-						<input id="dc_baja" type="date" ng-model="dc_baja" class="validate">
-
+						<fieldset id="dc_baja" class="validate" style="clear:both;">
+							<input type="number" min="1" max="31" ng-model="dc_bajad" style="width:90px;">
+							<span style="width:50px;">/</span>
+							<input type="number" min="1" max="12" ng-model="dc_bajam" style="width:90px;">
+							<span style="width:50px;">/</span>
+							<input type="number" min="1950" max="3000" ng-model="dc_bajaY" style="width:90px;">
+						</fieldset>
 					</div>
 
 					<!--| dc_causa | char(6) | YES  |     | NULL    |       |-->

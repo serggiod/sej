@@ -19,29 +19,31 @@ angular
 			$scope.formNuevoShow = false;
 			$scope.formVisualizarShow = false;
 			$scope.formModificarShow = false;
-			$d_docume = '';
-			$d_nombre = '';
-			$d_domici = '';
-			$d_telefo = '';
-			$d_barrio = '';
-			$d_cuil   = '';
-			$d_nacion = '';
-			$d_nacimi = '';
-			$d_celula = '';
-			$d_titulo = '';
-			$u_codigo = '';
-			$d_ecivil = '';
-			$d_decjur = '';
-			$d_copnac = '';
-			$d_copdni = '';
-			$d_coppla = '';
-			$d_copleg = '';
-			$d_copper = '';
-			$d_copdap = '';
-			$d_copcse = '';
-			$d_copcui = '';
-			$d_copsou = '';
-			$d_croqui = '';
+			$scope.d_docume = '';
+			$scope.d_nombre = '';
+			$scope.d_domici = '';
+			$scope.d_telefo = '';
+			$scope.d_barrio = '';
+			$scope.d_cuil   = '';
+			$scope.d_nacion = '';
+			$scope.d_nacimid = 1;
+			$scope.d_nacimim = 1;
+			$scope.d_nacimiY = 1980;
+			$scope.d_celula = '';
+			$scope.d_titulo = '';
+			$scope.u_codigo = '';
+			$scope.d_ecivil = '';
+			$scope.d_decjur = '';
+			$scope.d_copnac = '';
+			$scope.d_copdni = '';
+			$scope.d_coppla = '';
+			$scope.d_copleg = '';
+			$scope.d_copper = '';
+			$scope.d_copdap = '';
+			$scope.d_copcse = '';
+			$scope.d_copcui = '';
+			$scope.d_copsou = '';
+			$scope.d_croqui = '';
 			$scope.alertColor = 'green';
 			$scope.alertText  = 'Complete el siguiente formulario.';
 		};
@@ -65,7 +67,7 @@ angular
 					d_barrio : $scope.d_barrio,
 					d_cuil   : $scope.d_cuil  ,
 					d_nacion : $scope.d_nacion,
-					d_nacimi : $scope.d_nacimi,
+					d_nacimi : $scope.d_nacimiY+'-'+$scope.d_nacimim+'-'+$scope.d_nacimid,
 					d_celula : $scope.d_celula,
 					d_titulo : $scope.d_titulo,
 					u_codigo : $scope.u_codigo,
@@ -110,6 +112,7 @@ angular
 			$session.autorize(function(){
 				$http.get('models/docente.get.php?d_docume='+d_docume)
 					.success(function(json){
+						d_nacimi = json.d_nacimi.split('-');
 						$scope.d_docume = parseInt(json.d_docume);
 						$scope.d_nombre = json.d_nombre;
 						$scope.d_domici = json.d_domici;
@@ -117,7 +120,9 @@ angular
 						$scope.d_barrio = json.d_barrio;
 						$scope.d_cuil   = parseInt(json.d_cuil  );
 						$scope.d_nacion = json.d_nacion;
-						$scope.d_nacimi = json.d_nacimi;
+						$scope.d_nacimid = parseInt(d_nacimi[2]);
+						$scope.d_nacimim = parseInt(d_nacimi[1]);
+						$scope.d_nacimiY = parseInt(d_nacimi[0]);
 						$scope.d_celula = parseInt(json.d_celula);
 						$scope.d_titulo = json.d_titulo;
 						$scope.u_codigo = parseInt(json.u_codigo);
@@ -154,6 +159,7 @@ angular
 				$session.autorize(function(){
 					$http.get('models/docente.get.php?d_docume='+d_docume)
 						.success(function(json){
+							d_nacimi = json.d_nacimi.split('-');
 							$scope.d_docume = parseInt(json.d_docume);
 							$scope.d_nombre = json.d_nombre;
 							$scope.d_domici = json.d_domici;
@@ -161,7 +167,9 @@ angular
 							$scope.d_barrio = json.d_barrio;
 							$scope.d_cuil   = parseInt(json.d_cuil  );
 							$scope.d_nacion = json.d_nacion;
-							$scope.d_nacimi = json.d_nacimi;
+							$scope.d_nacimid = parseInt(d_nacimi[2]);
+							$scope.d_nacimim = parseInt(d_nacimi[1]);
+							$scope.d_nacimiY = parseInt(d_nacimi[0]);
 							$scope.d_celula = parseInt(json.d_celula);
 							$scope.d_titulo = json.d_titulo;
 							$scope.u_codigo = parseInt(json.u_codigo);
@@ -201,7 +209,7 @@ angular
 					d_barrio : $scope.d_barrio,
 					d_cuil   : $scope.d_cuil  ,
 					d_nacion : $scope.d_nacion,
-					d_nacimi : $scope.d_nacimi,
+					d_nacimi : $scope.d_nacimiY+'-'+$scope.d_nacimim+'-'+$scope.d_nacimid,
 					d_celula : $scope.d_celula,
 					d_titulo : $scope.d_titulo,
 					u_codigo : $scope.u_codigo,

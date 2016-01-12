@@ -15,6 +15,7 @@ angular
 		};
 
 		$scope.formsHide = function(){
+			date = new Date();
 			$scope.formTablaShow = false;
 			$scope.formNuevoShow = false;
 			$scope.formVisualizarShow = false;
@@ -22,10 +23,14 @@ angular
 			$scope.d_docume   = '';
 			$scope.e_numero   = '';
 			$scope.dc_cargo   = '';
-			$scope.dc_alta    = '';
+			$scope.dc_altad   = parseInt(date.getDate());
+			$scope.dc_altam   = parseInt(date.getMonth() +1);
+			$scope.dc_altaY   = parseInt(date.getFullYear());
 			$scope.dc_hora    = '';
 			$scope.dc_decr    = '';
-			$scope.dc_baja    = '';
+			$scope.dc_bajad   = parseInt(date.getDate());
+			$scope.dc_bajam   = parseInt(date.getMonth() +1);
+			$scope.dc_bajaY   = parseInt(date.getFullYear());
 			$scope.dc_causa   = '';
 			$scope.alertColor = 'green';
 			$scope.alertText  = 'Complete el siguiente formulario.';
@@ -41,15 +46,15 @@ angular
 			$scope.formTablaShow=true;
 		};
 		$scope.nuevoAceptar = function(){
-			if(($scope.a_docume)) {
+			if($scope.d_docume) {
 				json = {
 					d_docume:$scope.d_docume,
 					e_numero:$scope.e_numero,
 					dc_cargo:$scope.dc_cargo,
-					dc_alta :$scope.dc_alta ,
+					dc_alta :$scope.dc_altaY+'-'+$scope.dc_altam+'-'+$scope.dc_altad,
 					dc_hora :$scope.dc_hora ,
 					dc_decr :$scope.dc_decr ,
-					dc_baja :$scope.dc_baja ,
+					dc_baja :$scope.dc_bajaY+'-'+$scope.dc_bajam+'-'+$scope.dc_bajad ,
 					dc_causa:$scope.dc_causa
 				};
 				$http.post('models/cargo.post.php',json)
@@ -80,13 +85,19 @@ angular
 			$session.autorize(function(){
 				$http.get('models/cargo.get.php?d_docume='+d_docume)
 					.success(function(json){
+						dc_alta = json.dc_alta.split('-');
+						dc_baja = json.dc_baja.split('-');
 						$scope.d_docume	  = parseInt(json.d_docume);
 						$scope.e_numero	  = parseInt(json.e_numero);
 						$scope.dc_cargo	  = json.dc_cargo;
-						$scope.dc_alta 	  = json.dc_alta ;
+						$scope.dc_altad   = parseInt(dc_alta[2]);
+						$scope.dc_altam   = parseInt(dc_alta[1]);
+						$scope.dc_altaY   = parseInt(dc_alta[0]);
 						$scope.dc_hora 	  = parseInt(json.dc_hora) ;
 						$scope.dc_decr 	  = parseInt(json.dc_decr) ;
-						$scope.dc_baja 	  = json.dc_baja ;
+						$scope.dc_bajad   = parseInt(dc_baja[2]) ;
+						$scope.dc_bajam   = parseInt(dc_baja[1]) ;
+						$scope.dc_bajaY   = parseInt(dc_baja[0]) ;
 						$scope.dc_causa	  = json.dc_causa;
 						$scope.alertColor = 'blue';
 						$scope.alertText  = 'Visualizando información de un alumno.';
@@ -109,14 +120,20 @@ angular
 				$session.autorize(function(){
 					$http.get('models/cargo.get.php?d_docume='+d_docume)
 						.success(function(json){
-							$scope.d_docume   = parseInt(json.d_docume);
-							$scope.e_numero   = parseInt(json.e_numero);
-							$scope.dc_cargo   = json.dc_cargo;
-							$scope.dc_alta    = json.dc_alta ;
-							$scope.dc_hora    = parseInt(json.dc_hora) ;
-							$scope.dc_decr    = parseInt(json.dc_decr) ;
-							$scope.dc_baja    = json.dc_baja ;
-							$scope.dc_causa   = json.dc_causa;
+							dc_alta = json.dc_alta.split('-');
+							dc_baja = json.dc_baja.split('-');
+							$scope.d_docume	  = parseInt(json.d_docume);
+							$scope.e_numero	  = parseInt(json.e_numero);
+							$scope.dc_cargo	  = json.dc_cargo;
+							$scope.dc_altad   = parseInt(dc_alta[2]);
+							$scope.dc_altam   = parseInt(dc_alta[1]);
+							$scope.dc_altaY   = parseInt(dc_alta[0]);
+							$scope.dc_hora 	  = parseInt(json.dc_hora) ;
+							$scope.dc_decr 	  = parseInt(json.dc_decr) ;
+							$scope.dc_bajad   = parseInt(dc_baja[2]) ;
+							$scope.dc_bajam   = parseInt(dc_baja[1]) ;
+							$scope.dc_bajaY   = parseInt(dc_baja[0]) ;
+							$scope.dc_causa	  = json.dc_causa;
 							$scope.alertColor = 'yellow';
 							$scope.alertText  = 'Modificando información de un alumno.';
 							$scope.formModificarShow = true;
@@ -137,10 +154,10 @@ angular
 					d_docume:$scope.d_docume,
 					e_numero:$scope.e_numero,
 					dc_cargo:$scope.dc_cargo,
-					dc_alta :$scope.dc_alta ,
+					dc_alta :$scope.dc_altaY+'-'+$scope.dc_altam+'-'+$scope.dc_altad,
 					dc_hora :$scope.dc_hora ,
 					dc_decr :$scope.dc_decr ,
-					dc_baja :$scope.dc_baja ,
+					dc_baja :$scope.dc_bajaY+'-'+$scope.dc_bajam+'-'+$scope.dc_bajad ,
 					dc_causa:$scope.dc_causa
 				};
 				$http.put('models/cargo.put.php',json)

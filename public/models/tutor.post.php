@@ -17,7 +17,7 @@ if($_SERVER['REQUEST_METHOD']==='POST'){
 		$t_barrio = filter_var($data->t_barrio ,FILTER_SANITIZE_NUMBER_INT);
 		$t_cuil   = filter_var($data->t_cuil   ,FILTER_SANITIZE_NUMBER_INT);
 		$t_nacion = filter_var($data->t_nacion ,FILTER_SANITIZE_STRING);
-		$t_nacimi = filter_var($data->t_nacimi ,FILTER_SANITIZE_STRING);
+		$t_nacimi = date('Y-m-d',strtotime(filter_var($data->t_nacimi ,FILTER_SANITIZE_STRING)));
 		$t_celula = filter_var($data->t_celula ,FILTER_SANITIZE_NUMBER_INT);
 		$t_telalt = filter_var($data->t_telalt ,FILTER_SANITIZE_NUMBER_INT);
 		$t_ocupac = filter_var($data->t_ocupac ,FILTER_SANITIZE_STRING);

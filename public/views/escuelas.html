@@ -28,9 +28,6 @@
 						NOMBRE
 					</td>
 					<td>
-						DIRECCION
-					</td>
-					<td>
 						TELEFONO
 					</td>
 					<td>
@@ -43,9 +40,6 @@
 					</td>
 					<td>
 						{{e.nombre}}
-					</td>
-					<td>
-						{{e.direccion}}
 					</td>
 					<td>
 						{{e.telefono}}
@@ -88,7 +82,7 @@
 				<div class="card-content white black-text">
 
 					<div class="input-field">
-						<input id="numero" type="text" maxlength="5" ng-model="numero" class="validate">
+						<input id="numero" type="number" maxlength="5" ng-model="numero" class="validate">
 						<label for="numero">Numero:</label>
 					</div>
 
@@ -144,7 +138,7 @@
 
 					<label for="numero">Numero:</label>
 					<div class="input-field">
-						<input id="numero" type="text" maxlength="5" ng-model="numero" class="validate" readonly>
+						<input id="numero" type="number" maxlength="5" ng-model="numero" class="validate" readonly>
 					</div>
 
 					<label for="nombre">Nombre:</label>
@@ -195,7 +189,7 @@
 
 					<label for="numero">Numero:</label>
 					<div class="input-field">
-						<input id="numero" type="text" maxlength="5" ng-model="numero" class="validate" readonly>
+						<input id="numero" type="number" maxlength="5" ng-model="numero" class="validate" readonly>
 					</div>
 
 					<label for="nombre">Nombre:</label>

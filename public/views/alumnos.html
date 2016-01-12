@@ -112,9 +112,15 @@
 					</div>
 
 					<!-- | a_nacimi  | date       | YES  |     | NULL    |       | -->
+					<label for="a_nacimi">Nacimiento:</label>
 					<div class="input-field">
-						<input id="a_nacimi" type="date" ng-model="a_nacimi" class="validate">
-						<label for="a_nacimi">Nacimiento:</label>
+						<fieldset id="a_nacimi" class="validate" style="clear:both;">
+							<input type="number" min="1" max="31" ng-model="a_nacimid" style="width:90px;">
+							<span style="width:50px;">/</span>
+							<input type="number" min="1" max="12" ng-model="a_nacimim" style="width:90px;">
+							<span style="width:50px;">/</span>
+							<input type="number" min="1950" max="3000" ng-model="a_nacimiY" style="width:90px;">
+						</fieldset>
 					</div>
 
 					<!-- | a_cuil    | int(12)    | YES  |     | NULL    |       |-->
@@ -178,15 +184,27 @@
 					</div>
 
 					<!-- | a_fechai  | date       | YES  |     | NULL    |       |-->
+					<label for="a_fechai">Fecha de Inicio:</label>
 					<div class="input-field">
-						<input id="a_fechai" type="date" ng-model="a_fechai" class="validate">
-						<label for="a_fechai">Fecha de Inicio:</label>
+						<fieldset id="a_fechai" class="validate">
+							<input type="number" min="1" max="31" ng-model="a_fechaid" style="width:90px;">
+							<span style="width:50px;">/</span>
+							<input type="number" min="1" max="12" ng-model="a_fechaim" style="width:90px;">
+							<span style="width:50px;">/</span>
+							<input type="number" min="1950" max="3000" ng-model="a_fechaiY" style="width:90px;">
+						</fieldset>
 					</div>
 
 					<!-- | a_fechaf  | date       | YES  |     | NULL    |       |-->
+					<label for="a_fechaf">Fecha de Finalizaci&oacute;n:</label>
 					<div class="input-field">
-						<input id="a_fechaf" type="date" ng-model="a_fechaf" class="validate">
-						<label for="a_fechaf">Fecha de Finalizaci&oacute;n:</label>
+						<fieldset id="a_fechaf" class="validate">
+							<input type="number" min="1" max="31" ng-model="a_fechafd" style="width:90px;">
+							<span style="width:50px;">/</span>
+							<input type="number" min="1" max="12" ng-model="a_fechafm" style="width:90px;">
+							<span style="width:50px;">/</span>
+							<input type="number" min="1950" max="3000" ng-model="a_fechafY" style="width:90px;">
+						</fieldset>
 					</div>
 
 					<!-- | a_titulo  | char(6)    | YES  |     | NULL    |       |-->
@@ -347,12 +365,16 @@
 					</div>
 
 					<!-- | a_nacimi  | date       | YES  |     | NULL    |       | -->
-						<label for="a_nacimi">Nacimiento:</label>
+					<label for="a_nacimi">Nacimiento:</label>
 					<div class="input-field">
-						<input id="a_nacimi" type="date" ng-model="a_nacimi" class="validate" readonly>
-
+						<fieldset id="a_nacimi" class="validate" style="clear:both;">
+							<input type="number" min="1" max="31" ng-model="a_nacimid" style="width:90px;" readonly>
+							<span style="width:50px;">/</span>
+							<input type="number" min="1" max="12" ng-model="a_nacimim" style="width:90px;" readonly>
+							<span style="width:50px;">/</span>
+							<input type="number" min="1950" max="3000" ng-model="a_nacimiY" style="width:90px;" readonly>
+						</fieldset>
 					</div>
-
 					<!-- | a_cuil    | int(12)    | YES  |     | NULL    |       |-->
 						<label for="a_cuil">Cuil:</label>
 					<div class="input-field">
@@ -424,17 +446,27 @@
 					</div>
 
 					<!-- | a_fechai  | date       | YES  |     | NULL    |       |-->
-						<label for="a_fechai">Fecha de Inicio:</label>
+					<label for="a_fechai">Fecha de Inicio:</label>
 					<div class="input-field">
-						<input id="a_fechai" type="date" ng-model="a_fechai" class="validate" readonly>
-
+						<fieldset id="a_fechai" class="validate">
+							<input type="number" min="1" max="31" ng-model="a_fechaid" style="width:90px;" readonly>
+							<span style="width:50px;">/</span>
+							<input type="number" min="1" max="12" ng-model="a_fechaim" style="width:90px;" readonly>
+							<span style="width:50px;">/</span>
+							<input type="number" min="1950" max="3000" ng-model="a_fechaiY" style="width:90px;" readonly>
+						</fieldset>
 					</div>
-
+					
 					<!-- | a_fechaf  | date       | YES  |     | NULL    |       |-->
-						<label for="a_fechaf">Fecha de Finalizaci&oacute;n:</label>
+					<label for="a_fechaf">Fecha de Finalizaci&oacute;n:</label>
 					<div class="input-field">
-						<input id="a_fechaf" type="date" ng-model="a_fechaf" class="validate" readonly>
-
+						<fieldset id="a_fechaf" class="validate">
+							<input type="number" min="1" max="31" ng-model="a_fechafd" style="width:90px;">
+							<span style="width:50px;">/</span>
+							<input type="number" min="1" max="12" ng-model="a_fechafm" style="width:90px;">
+							<span style="width:50px;">/</span>
+							<input type="number" min="1950" max="3000" ng-model="a_fechafY" style="width:90px;" readonly>
+						</fieldset>
 					</div>
 
 					<!-- | a_titulo  | char(6)    | YES  |     | NULL    |       |-->
@@ -605,10 +637,15 @@
 					</div>
 
 					<!-- | a_nacimi  | date       | YES  |     | NULL    |       | -->
-						<label for="a_nacimi">Nacimiento:</label>
+					<label for="a_nacimi">Nacimiento:</label>
 					<div class="input-field">
-						<input id="a_nacimi" type="date" ng-model="a_nacimi" class="validate">
-
+						<fieldset id="a_nacimi" class="validate" style="clear:both;">
+							<input type="number" min="1" max="31" ng-model="a_nacimid" style="width:90px;">
+							<span style="width:50px;">/</span>
+							<input type="number" min="1" max="12" ng-model="a_nacimim" style="width:90px;">
+							<span style="width:50px;">/</span>
+							<input type="number" min="1950" max="3000" ng-model="a_nacimiY" style="width:90px;">
+						</fieldset>
 					</div>
 
 					<!-- | a_cuil    | int(12)    | YES  |     | NULL    |       |-->
@@ -682,17 +719,26 @@
 					</div>
 
 					<!-- | a_fechai  | date       | YES  |     | NULL    |       |-->
-						<label for="a_fechai">Fecha de Inicio:</label>
+					<label for="a_fechai">Fecha de Inicio:</label>
 					<div class="input-field">
-						<input id="a_fechai" type="date" ng-model="a_fechai" class="validate">
-
+						<fieldset id="a_fechai" class="validate">
+							<input type="number" min="1" max="31" ng-model="a_fechaid" style="width:90px;">
+							<span style="width:50px;">/</span>
+							<input type="number" min="1" max="12" ng-model="a_fechaim" style="width:90px;">
+							<span style="width:50px;">/</span>
+							<input type="number" min="1950" max="3000" ng-model="a_fechaiY" style="width:90px;">
+						</fieldset>
 					</div>
-
 					<!-- | a_fechaf  | date       | YES  |     | NULL    |       |-->
-						<label for="a_fechaf">Fecha de Finalizaci&oacute;n:</label>
+					<label for="a_fechaf">Fecha de Finalizaci&oacute;n:</label>
 					<div class="input-field">
-						<input id="a_fechaf" type="date" ng-model="a_fechaf" class="validate">
-
+						<fieldset id="a_fechaf" class="validate">
+							<input type="number" min="1" max="31" ng-model="a_fechafd" style="width:90px;">
+							<span style="width:50px;">/</span>
+							<input type="number" min="1" max="12" ng-model="a_fechafm" style="width:90px;">
+							<span style="width:50px;">/</span>
+							<input type="number" min="1950" max="3000" ng-model="a_fechafY" style="width:90px;">
+						</fieldset>
 					</div>
 
 					<!-- | a_titulo  | char(6)    | YES  |     | NULL    |       |-->

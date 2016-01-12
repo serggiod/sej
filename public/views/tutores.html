@@ -131,9 +131,15 @@
 					</div>
 
 					<!-- | t_nacimi | date     | YES  |     | NULL    |       |-->
+					<label for="t_nacimi">Fecha de Nacimiento:</label>
 					<div class="input-field">
-						<input id="t_nacimi" type="date" ng-model="t_nacimi" class="validate">
-						<label for="t_nacimi">Fecha de Nacimiento:</label>
+						<fieldset id="t_nacimi" class="validate" style="clear:both;">
+							<input type="number" min="1" max="31" ng-model="t_nacimid" style="width:90px;">
+							<span style="width:50px;">/</span>
+							<input type="number" min="1" max="12" ng-model="t_nacimim" style="width:90px;">
+							<span style="width:50px;">/</span>
+							<input type="number" min="1950" max="3000" ng-model="t_nacimiY" style="width:90px;">
+						</fieldset>
 					</div>
 
 					<!-- | t_celula | int(10)  | YES  |     | NULL    |       |-->
@@ -255,7 +261,13 @@
 					<!-- | t_nacimi | date     | YES  |     | NULL    |       |-->
 					<label for="t_nacimi">Fecha de Nacimiento:</label>
 					<div class="input-field">
-						<input id="t_nacimi" type="date" ng-model="t_nacimi" class="validate" readonly>
+						<fieldset id="t_nacimi" class="validate" style="clear:both;">
+							<input type="number" min="1" max="31" ng-model="t_nacimid" style="width:90px;" readonly>
+							<span style="width:50px;">/</span>
+							<input type="number" min="1" max="12" ng-model="t_nacimim" style="width:90px;" readonly>
+							<span style="width:50px;">/</span>
+							<input type="number" min="1950" max="3000" ng-model="t_nacimiY" style="width:90px;" readonly>
+						</fieldset>
 					</div>
 
 					<!-- | t_celula | int(10)  | YES  |     | NULL    |       |-->
@@ -372,7 +384,13 @@
 					<!-- | t_nacimi | date     | YES  |     | NULL    |       |-->
 					<label for="t_nacimi">Fecha de Nacimiento:</label>
 					<div class="input-field">
-						<input id="t_nacimi" type="date" ng-model="t_nacimi" class="validate">
+						<fieldset id="t_nacimi" class="validate" style="clear:both;">
+							<input type="number" min="1" max="31" ng-model="t_nacimid" style="width:90px;">
+							<span style="width:50px;">/</span>
+							<input type="number" min="1" max="12" ng-model="t_nacimim" style="width:90px;">
+							<span style="width:50px;">/</span>
+							<input type="number" min="1950" max="3000" ng-model="t_nacimiY" style="width:90px;">
+						</fieldset>
 					</div>
 
 					<!-- | t_celula | int(10)  | YES  |     | NULL    |       |-->

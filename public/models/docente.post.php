@@ -16,7 +16,7 @@ if($_SERVER['REQUEST_METHOD']==='POST'){
 		$d_barrio = filter_var($data->d_barrio ,FILTER_SANITIZE_STRING);
 		$d_cuil   = filter_var($data->d_cuil   ,FILTER_SANITIZE_STRING);
 		$d_nacion = filter_var($data->d_nacion ,FILTER_SANITIZE_STRING);
-		$d_nacimi = filter_var($data->d_nacimi ,FILTER_SANITIZE_STRING);
+		$d_nacimi = date('Y-m-d',strtotime(filter_var($data->d_nacimi ,FILTER_SANITIZE_STRING)));
 		$d_celula = filter_var($data->d_celula ,FILTER_SANITIZE_NUMBER_INT);
 		$d_titulo = filter_var($data->d_titulo ,FILTER_SANITIZE_STRING);
 		$u_codigo = filter_var($data->u_codigo ,FILTER_SANITIZE_NUMBER_INT);

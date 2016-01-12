@@ -15,7 +15,7 @@ if($_SERVER['REQUEST_METHOD']==='POST'){
 		$c_codigo = filter_var($data->c_codigo,FILTER_SANITIZE_NUMBER_INT);
 		$a_nombre = filter_var($data->a_nombre,FILTER_SANITIZE_STRING);
 		$a_nacion = filter_var($data->a_nacion,FILTER_SANITIZE_STRING);
-		$a_nacimi = filter_var($data->a_nacimi,FILTER_SANITIZE_STRING);
+		$a_nacimi = date('Y-m-d',strtotime(filter_var($data->a_nacimi,FILTER_SANITIZE_STRING)));
 		$a_cuil = filter_var($data->a_cuil,FILTER_SANITIZE_NUMBER_INT);
 		$a_domici = filter_var($data->a_domici,FILTER_SANITIZE_STRING);
 		$a_barrio = filter_var($data->a_barrio,FILTER_SANITIZE_STRING);
@@ -26,8 +26,8 @@ if($_SERVER['REQUEST_METHOD']==='POST'){
 		$a_faltas = filter_var($data->a_faltas,FILTER_SANITIZE_NUMBER_INT);
 		$a_promed = filter_var($data->a_promed,FILTER_SANITIZE_NUMBER_FLOAT);
 		$a_celula = filter_var($data->a_celula,FILTER_SANITIZE_NUMBER_INT);
-		$a_fechai = filter_var($data->a_fechai,FILTER_SANITIZE_STRING);
-		$a_fechaf = filter_var($data->a_fechaf,FILTER_SANITIZE_STRING);
+		$a_fechai = date('Y-m-d',strtotime(filter_var($data->a_fechai,FILTER_SANITIZE_STRING)));
+		$a_fechaf = date('Y-m-d',strtotime(filter_var($data->a_fechaf,FILTER_SANITIZE_STRING)));
 		$a_titulo = filter_var($data->a_titulo,FILTER_SANITIZE_STRING);
 		$a_copdni = filter_var($data->a_copdni,FILTER_SANITIZE_STRING);
 		$a_copnac = filter_var($data->a_copnac,FILTER_SANITIZE_STRING);
