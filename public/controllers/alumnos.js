@@ -14,6 +14,40 @@ angular
 				});
 		};
 
+		$scope.tutoresInit = function(){
+			$http.get('models/tutores.get.php')
+				.success(function(json){
+					$scope.tutores = json;
+					$('#t_docume').material_select();
+				})
+				.error(function(){
+					$session.destroy();
+				});
+		};
+
+		$scope.escuelasInit = function(){
+			$http.get('models/escuelas.get.php')
+				.success(function(json){
+					$scope.escuelas = json;
+					$('#e_numero').material_select();
+				})
+				.error(function(){
+					$session.destroy();
+				});
+
+		};
+
+		$scope.cursosInit = function(){
+			$http.get('models/cursos.get.php')
+				.success(function(json){
+					$scope.cursos = json;
+					$('#c_codigo').material_select();
+				})
+				.error(function(){
+					$session.destroy();
+				});
+		};
+
 		$scope.formsHide = function(){
 			$scope.formTablaShow = false;
 			$scope.formNuevoShow = false;
@@ -114,6 +148,9 @@ angular
 							$scope.alertColor = 'green';
 							$scope.alertText  = 'El alumno se ingreso con éxito.';
 							$scope.init();
+							$scope.tutoresInit();
+							$scope.escuelasInit();
+							$scope.cursosInit();
 						}
 						else {
 							$scope.alertColor = 'red';
@@ -300,6 +337,9 @@ angular
 							$scope.alertColor = 'green';
 							$scope.alertText  = 'El alumno se modifico con éxito.';
 							$scope.init();
+							$scope.tutoresInit();
+							$scope.escuelasInit();
+							$scope.cursosInit();
 						}
 						else {
 							$scope.alertColor = 'red';
@@ -331,6 +371,9 @@ angular
 		$session.autorize(function(){
 			$session.mainmenu();
 			$scope.init();
+			$scope.tutoresInit();
+			$scope.escuelasInit();
+			$scope.cursosInit();
 		});
 
 	});

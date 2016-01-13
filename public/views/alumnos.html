@@ -28,6 +28,9 @@
 						NOMBRE
 					</td>
 					<td>
+						TUTOR
+					</td>
+					<td>
 						ACCIONES
 					</td>
 				</tr>
@@ -37,6 +40,9 @@
 					</td>
 					<td>
 						{{a.a_nombre}}
+					</td>
+					<td>
+						{{a.t_nombre}}
 					</td>
 					<td>
 						<button type="button" class="blue darken-4 white-text" style="border:0;" ng-click="visualizar(a.a_docume)">
@@ -82,22 +88,28 @@
 					</div>
 
 					<!-- | t_docume  | int(9)     | NO   | PRI | 0       |       |-->
-					<div class="input-field">
-						<input id="t_docume" type="number" maxlength="9" ng-model="t_docume" class="validate">
-						<label for="t_docume">Tutor:</label>
-					</div>
+					<label for="t_docume">Tutor:</label>
+					<select id="t_docume" ng-model="t_docume" class="browser-default">
+						<option ng-repeat="t in tutores" value="{{t.t_docume}}">
+							{{t.t_nombre}}
+						</option>
+					</select>
 
 					<!-- | e_numero  | tinyint(4) | NO   |     | 0       |       |-->
-					<div class="input-field">
-						<input id="e_numero" type="number" maxlength="4" ng-model="e_numero" class="validate">
-						<label for="e_numero">Numero de escuela:</label>
-					</div>
+					<label for="e_numero">Escuela:</label>
+					<select id="e_numero" ng-model="e_numero" class="browser-default">
+						<option ng-repeat="e in escuelas" value="{{e.e_numero}}">
+							{{e.e_nombre}}
+						</option>
+					</select>
 
 					<!--| c_codigo  | int(3)     | NO   | PRI | 0       |       |-->
-					<div class="input-field">
-						<input id="c_codigo" type="number" maxlength="3" ng-model="c_codigo" class="validate">
-						<label for="c_codigo">Codigo:</label>
-					</div>
+					<label for="c_codigo">Curso:</label>
+					<select id="c_codigo" ng-model="c_codigo" class="browser-default">
+						<option ng-repeat="c in cursos" value="{{c.c_codigo}}">
+							Año: {{c.c_anio}} | División: {{c.c_divisi}} | Turno: {{c.c_turno}}
+						</option>
+					</select>
 
 					<!-- | a_nombre  | char(16)   | YES  |     | NULL    |       | -->
 					<div class="input-field">
@@ -330,25 +342,28 @@
 					</div>
 
 					<!-- | t_docume  | int(9)     | NO   | PRI | 0       |       |-->
-						<label for="t_docume">Tutor:</label>
-					<div class="input-field">
-						<input id="t_docume" type="number" maxlength="9" ng-model="t_docume" class="validate" readonly>
-
-					</div>
+					<label for="t_docume">Tutor:</label>
+					<select id="t_docume" ng-model="t_docume" class="browser-default" disabled>
+						<option ng-repeat="t in tutores" value="{{t.t_docume}}">
+							{{t.t_nombre}}
+						</option>
+					</select>
 
 					<!-- | e_numero  | tinyint(4) | NO   |     | 0       |       |-->
-						<label for="e_numero">Numero de escuela:</label>
-					<div class="input-field">
-						<input id="e_numero" type="number" maxlength="4" ng-model="e_numero" class="validate" readonly>
-
-					</div>
+					<label for="e_numero">Escuela:</label>
+					<select id="e_numero" ng-model="e_numero" class="browser-default" disabled>
+						<option ng-repeat="e in escuelas" value="{{e.e_numero}}">
+							{{e.e_nombre}}
+						</option>
+					</select>
 
 					<!--| c_codigo  | int(3)     | NO   | PRI | 0       |       |-->
-						<label for="c_codigo">Codigo:</label>
-					<div class="input-field">
-						<input id="c_codigo" type="number" maxlength="3" ng-model="c_codigo" class="validate" readonly>
-
-					</div>
+					<label for="c_codigo">Curso:</label>
+					<select id="c_codigo" ng-model="c_codigo" class="browser-default" disabled>
+						<option ng-repeat="c in cursos" value="{{c.c_codigo}}">
+							Año: {{c.c_anio}} | División: {{c.c_divisi}} | Turno: {{c.c_turno}}
+						</option>
+					</select>
 
 					<!-- | a_nombre  | char(16)   | YES  |     | NULL    |       | -->
 						<label for="a_nombre">Nombre:</label>
@@ -602,26 +617,28 @@
 					</div>
 
 					<!-- | t_docume  | int(9)     | NO   | PRI | 0       |       |-->
-						<label for="t_docume">Tutor:</label>
-					<div class="input-field">
-						<input id="t_docume" type="number" maxlength="9" ng-model="t_docume" class="validate">
-
-					</div>
+					<label for="t_docume">Tutor:</label>
+					<select id="t_docume" ng-model="t_docume" class="browser-default">
+						<option ng-repeat="t in tutores" value="{{t.t_docume}}">
+							{{t.t_nombre}}
+						</option>
+					</select>
 
 					<!-- | e_numero  | tinyint(4) | NO   |     | 0       |       |-->
-						<label for="e_numero">Numero de escuela:</label>
-					<div class="input-field">
-						<input id="e_numero" type="number" maxlength="4" ng-model="e_numero" class="validate">
-						
-					</div>
+					<label for="e_numero">Escuela:</label>
+					<select id="e_numero" ng-model="e_numero" class="browser-default">
+						<option ng-repeat="e in escuelas" value="{{e.e_numero}}">
+							{{e.e_nombre}}
+						</option>
+					</select>
 
 					<!--| c_codigo  | int(3)     | NO   | PRI | 0       |       |-->
-						<label for="c_codigo">Codigo:</label>
-					<div class="input-field">
-						<input id="c_codigo" type="number" maxlength="3" ng-model="c_codigo" class="validate">
-
-					</div>
-
+					<label for="c_codigo">Curso:</label>
+					<select id="c_codigo" ng-model="c_codigo" class="browser-default">
+						<option ng-repeat="c in cursos" value="{{c.c_codigo}}">
+							Año: {{c.c_anio}} | División: {{c.c_divisi}} | Turno: {{c.c_turno}}
+						</option>
+					</select>
 					<!-- | a_nombre  | char(16)   | YES  |     | NULL    |       | -->
 						<label for="a_nombre">Nombre:</label>
 					<div class="input-field">
