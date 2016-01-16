@@ -107,9 +107,11 @@
 					</div>
 
 					<!-- | u_codigo | int(5)   | YES  |     | 0       |       |-->
+					<label for="u_codigo">Usuario:</label>
 					<div class="input-field">
-						<input id="u_codigo" type="number" maxlength="5" ng-model="u_codigo" class="validate">
-						<label for="u_codigo">C&oacute;digo:</label>
+						<select id="u_codigo"ng-model="u_codigo" class="browser-default">
+							<option ng-repeat="u in usuarios" value="{{u.u_codigo}}">{{u.u_nombre}}</option>
+						</select>
 					</div>
 
 					<!-- | t_barrio | char(10) | YES  |     | NULL    |       |-->
@@ -235,9 +237,11 @@
 					</div>
 
 					<!-- | u_codigo | int(5)   | YES  |     | 0       |       |-->
-					<label for="u_codigo">C&oacute;digo:</label>
+					<label for="u_codigo">Usuario:</label>
 					<div class="input-field">
-						<input id="u_codigo" type="number" maxlength="5" ng-model="u_codigo" class="validate" readonly>
+						<select id="u_codigo"ng-model="u_codigo" class="browser-default" disabled="disabled">
+							<option ng-repeat="u in usuarios" value="{{u.u_codigo}}">{{u.u_nombre}}</option>
+						</select>
 					</div>
 
 					<!-- | t_barrio | char(10) | YES  |     | NULL    |       |-->
@@ -358,9 +362,11 @@
 					</div>
 
 					<!-- | u_codigo | int(5)   | YES  |     | 0       |       |-->
-					<label for="u_codigo">C&oacute;digo:</label>
+					<label for="u_codigo">Usuario:</label>
 					<div class="input-field">
-						<input id="u_codigo" type="number" maxlength="5" ng-model="u_codigo" class="validate">
+						<select id="u_codigo"ng-model="u_codigo" class="browser-default">
+							<option ng-repeat="u in usuarios" value="{{u.u_codigo}}">{{u.u_nombre}}</option>
+						</select>
 					</div>
 
 					<!-- | t_barrio | char(10) | YES  |     | NULL    |       |-->

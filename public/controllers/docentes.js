@@ -14,6 +14,16 @@ angular
 				});
 		};
 
+		$scope.usuariosInit = function(){
+			$http.get('models/usuarios.get.php')
+				.success(function(json){
+					$scope.usuarios = json;
+				})
+				.error(function(){
+					$session.destroy();
+				});
+		};
+
 		$scope.formsHide = function(){
 			$scope.formTablaShow = false;
 			$scope.formNuevoShow = false;
@@ -125,7 +135,7 @@ angular
 						$scope.d_nacimiY = parseInt(d_nacimi[0]);
 						$scope.d_celula = parseInt(json.d_celula);
 						$scope.d_titulo = json.d_titulo;
-						$scope.u_codigo = parseInt(json.u_codigo);
+						$scope.u_codigo = json.u_codigo;
 						$scope.d_ecivil = json.d_ecivil;
 						$scope.d_decjur = parseInt(json.d_decjur);
 						$scope.d_copnac = json.d_copnac;
@@ -172,7 +182,7 @@ angular
 							$scope.d_nacimiY = parseInt(d_nacimi[0]);
 							$scope.d_celula = parseInt(json.d_celula);
 							$scope.d_titulo = json.d_titulo;
-							$scope.u_codigo = parseInt(json.u_codigo);
+							$scope.u_codigo = json.u_codigo;
 							$scope.d_ecivil = json.d_ecivil;
 							$scope.d_decjur = parseInt(json.d_decjur);
 							$scope.d_copnac = json.d_copnac;
@@ -263,6 +273,7 @@ angular
 		$session.autorize(function(){
 			$session.mainmenu();
 			$scope.init();
+			$scope.usuariosInit();
 		});
 
 	});

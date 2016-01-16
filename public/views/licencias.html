@@ -25,7 +25,7 @@
 						NUMERO
 					</td>
 					<td>
-						DOCUMENTO
+						DOCENTE
 					</td>
 					<td>
 						CAUSA
@@ -39,7 +39,7 @@
 						{{l.l_numero}}
 					</td>
 					<td>
-						{{l.d_docume}}
+						{{l.d_nombre}}
 					</td>
 					<td>
 						{{l.l_causa}}
@@ -88,9 +88,11 @@
 					</div>
 
 					<!--| d_docume | int(9)  | NO   | PRI | 0       |       |-->
+					<label for="d_docume">Docente:</label>
 					<div class="input-field">
-						<input id="d_docume" type="number" maxlength="9" ng-model="d_docume" class="validate">
-						<label for="d_docume">Documento:</label>
+						<select id="d_docume" ng-model="d_docume" class="browser-default">
+							<option ng-repeat="d in docentes" value="{{d.d_docume}}">{{d.d_nombre}}</option>
+						</select>
 					</div>
 
 					<!--| l_causa  | char(6) | YES  |     | NULL    |       |-->
@@ -161,9 +163,11 @@
 					</div>
 
 					<!--| d_docume | int(9)  | NO   | PRI | 0       |       |-->
-					<label for="d_docume">Documento:</labe>
+					<label for="d_docume">Docente:</label>
 					<div class="input-field">
-						<input id="d_docume" type="number" maxlength="9" ng-model="d_docume" class="validate" readonly>
+						<select id="d_docume" ng-model="d_docume" class="browser-default" disabled="disabled">
+							<option ng-repeat="d in docentes" value="{{d.d_docume}}">{{d.d_nombre}}</option>
+						</select>
 					</div>
 
 					<!--| l_causa  | char(6) | YES  |     | NULL    |       |-->
@@ -215,7 +219,7 @@
 			<div class="card white z-depth-5">
 				<div class="card-action grey lighten-3 center">
 					<h5>
-						ALUMNOS | Modificar
+						LICENCIAS | Modificar
 					</h5>
 				</div>
 				<div class="card-action {{alertColor}} lighten-4 black-text">
@@ -230,9 +234,11 @@
 					</div>
 
 					<!--| d_docume | int(9)  | NO   | PRI | 0       |       |-->
-					<label for="d_docume">Documento:</labe>
+					<label for="d_docume">Docente:</label>
 					<div class="input-field">
-						<input id="d_docume" type="number" maxlength="9" ng-model="d_docume" class="validate">
+						<select id="d_docume" ng-model="d_docume" class="browser-default" disabled="disabled">
+							<option ng-repeat="d in docentes" value="{{d.d_docume}}">{{d.d_nombre}}</option>
+						</select>
 					</div>
 
 					<!--| l_causa  | char(6) | YES  |     | NULL    |       |-->

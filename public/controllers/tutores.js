@@ -14,6 +14,16 @@ angular
 				});
 		};
 
+		$scope.usuariosInit = function(){
+			$http.get('models/usuarios.get.php')
+				.success(function(json){
+					$scope.usuarios = json;
+				})
+				.error(function(){
+					$session.destroy();
+				});
+		}
+
 		$scope.formsHide = function(){
 			$scope.formTablaShow = false;
 			$scope.formNuevoShow = false;
@@ -44,6 +54,7 @@ angular
 		$scope.nuevo = function(){
 			$scope.formsHide();
 			$scope.formNuevoShow = true;
+			$scope.u_codigo = $scope.usuarios[0].u_codigo;
 		}
 		$scope.nuevoCancelar = function(){
 			$scope.formsHide();
@@ -101,7 +112,7 @@ angular
 						$scope.t_nombre = json.t_nombre;
 						$scope.t_domici = json.t_domici;
 						$scope.t_telefo = parseInt(json.t_telefo);
-						$scope.u_codigo = parseInt(json.u_codigo);
+						$scope.u_codigo = json.u_codigo;
 						$scope.t_barrio = json.t_barrio;
 						$scope.t_cuil   = parseInt(json.t_cuil)  ;
 						$scope.t_nacion = json.t_nacion;
@@ -140,7 +151,7 @@ angular
 							$scope.t_nombre = json.t_nombre;
 							$scope.t_domici = json.t_domici;
 							$scope.t_telefo = parseInt(json.t_telefo);
-							$scope.u_codigo = parseInt(json.u_codigo);
+							$scope.u_codigo = json.u_codigo;
 							$scope.t_barrio = json.t_barrio;
 							$scope.t_cuil   = parseInt(json.t_cuil)  ;
 							$scope.t_nacion = json.t_nacion;
@@ -222,6 +233,7 @@ angular
 
 		$session.autorize(function(){
 			$session.mainmenu();
+			$scope.usuariosInit();
 			$scope.init();
 		});
 

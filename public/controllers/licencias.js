@@ -14,6 +14,15 @@ angular
 				});
 		};
 
+		$scope.docentesInit = function(){
+			$http.get('models/docentes.get.php')
+				.success(function(json){
+					$scope.docentes = json;
+				})
+				.error(function(){
+					$session.destroy();
+				});
+		};
 		$scope.formsHide = function(){
 			date = new Date();
 			$scope.formTablaShow = false;
@@ -36,6 +45,7 @@ angular
 		// Para el formulario Nuevo.
 		$scope.nuevo = function(){
 			$scope.formsHide();
+			$scope.d_docume = $scope.docentes[0].d_docume;
 			$scope.formNuevoShow = true;
 		}
 		$scope.nuevoCancelar = function(){
@@ -82,7 +92,7 @@ angular
 						l_desde = json.l_desde.split('-');
 						l_hasta = json.l_hasta.split('-');
 						$scope.l_numero = parseInt(json.l_numero);
-						$scope.d_docume = parseInt(json.d_docume);
+						$scope.d_docume = json.d_docume;
 						$scope.l_causa  = json.l_causa;
 						$scope.l_desded  = parseInt(l_desde[2]);
 						$scope.l_desdem  = parseInt(l_desde[1]);
@@ -114,7 +124,7 @@ angular
 							l_desde = json.l_desde.split('-');
 							l_hasta = json.l_hasta.split('-');
 							$scope.l_numero = parseInt(json.l_numero);
-							$scope.d_docume = parseInt(json.d_docume);
+							$scope.d_docume = json.d_docume;
 							$scope.l_causa  = json.l_causa;
 							$scope.l_desded  = parseInt(l_desde[2]);
 							$scope.l_desdem  = parseInt(l_desde[1]);
@@ -182,6 +192,7 @@ angular
 		$session.autorize(function(){
 			$session.mainmenu();
 			$scope.init();
+			$scope.docentesInit();
 		});
 
 	});

@@ -14,6 +14,7 @@ if($_SERVER['REQUEST_METHOD']==='PUT'){
 		$m_nombre = filter_var($data->m_nombre ,FILTER_SANITIZE_STRING);
 		$m_progra = filter_var($data->m_progra ,FILTER_SANITIZE_STRING);
 		$affect    = $db->exec("update materia set d_docume='$d_docume',m_nombre='$m_nombre',m_progra='$m_progra' where m_numero='$m_numero';");
+		error_log($affect);
 		if($affect) $json['result'] = true;
 		echo json_encode($json,JSON_FORCE_OBJECT);
 	}

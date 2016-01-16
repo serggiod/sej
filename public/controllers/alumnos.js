@@ -7,7 +7,7 @@ angular
 			$http.get('models/alumnos.get.php')
 				.success(function(json){
 					$scope.alumnos = json;
-					$scope.formTablaShow = true;
+					$scope.formGrid = true;
 				})
 				.error(function(){
 					$session.destroy();
@@ -18,7 +18,6 @@ angular
 			$http.get('models/tutores.get.php')
 				.success(function(json){
 					$scope.tutores = json;
-					$('#t_docume').material_select();
 				})
 				.error(function(){
 					$session.destroy();
@@ -29,19 +28,16 @@ angular
 			$http.get('models/escuelas.get.php')
 				.success(function(json){
 					$scope.escuelas = json;
-					$('#e_numero').material_select();
 				})
 				.error(function(){
 					$session.destroy();
 				});
-
 		};
 
 		$scope.cursosInit = function(){
 			$http.get('models/cursos.get.php')
 				.success(function(json){
 					$scope.cursos = json;
-					$('#c_codigo').material_select();
 				})
 				.error(function(){
 					$session.destroy();
@@ -49,10 +45,14 @@ angular
 		};
 
 		$scope.formsHide = function(){
-			$scope.formTablaShow = false;
-			$scope.formNuevoShow = false;
-			$scope.formVisualizarShow = false;
-			$scope.formModificarShow = false;
+			$scope.formTitle = '';
+			$scope.primarykey = false;
+			$scope.readonly = false;
+			$scope.formGrid = false;
+			$scope.formFields = false;
+			$scope.visualiazarButtons = false;
+			$scope.nuevoButtons = false;
+			$scope.modificarButtons = false;
 			$scope.a_docume = '';
 			$scope.t_docume = '';
 			$scope.e_numero = '';
@@ -99,11 +99,17 @@ angular
 		// Para el formulario Nuevo.
 		$scope.nuevo = function(){
 			$scope.formsHide();
-			$scope.formNuevoShow = true;
+			$scope.formTitle = 'Nuevo';
+			$scope.formFields = true;
+			$scope.nuevoButtons = true;
+			$scope.t_docume = $scope.tutores[0].t_docume;
+			$scope.e_numero = $scope.escuelas[0].e_numero;
+			$scope.c_codigo  = $scope.cursos[0].c_codigo;
+			
 		}
 		$scope.nuevoCancelar = function(){
 			$scope.formsHide();
-			$scope.formTablaShow=true;
+			$scope.formGrid=true;
 		};
 		$scope.nuevoAceptar = function(){
 			if(($scope.a_docume)) {
@@ -148,9 +154,6 @@ angular
 							$scope.alertColor = 'green';
 							$scope.alertText  = 'El alumno se ingreso con éxito.';
 							$scope.init();
-							$scope.tutoresInit();
-							$scope.escuelasInit();
-							$scope.cursosInit();
 						}
 						else {
 							$scope.alertColor = 'red';
@@ -177,9 +180,9 @@ angular
 						a_fechai = json.a_fechai.split('-');
 						a_fechaf = json.a_fechaf.split('-');
 						$scope.a_docume = parseInt(json.a_docume);
-						$scope.t_docume = parseInt(json.t_docume);
-						$scope.e_numero = parseInt(json.e_numero);
-						$scope.c_codigo = parseInt(json.c_codigo);
+						$scope.t_docume = json.t_docume;
+						$scope.e_numero = json.e_numero;
+						$scope.c_codigo = json.c_codigo;
 						$scope.a_nombre = json.a_nombre;
 						$scope.a_nacion = json.a_nacion;
 						$scope.a_nacimid = parseInt(a_nacimi[2]);
@@ -215,10 +218,13 @@ angular
 						$scope.a_conreg = parseInt(json.a_conreg);
 						$scope.a_conapr = parseInt(json.a_conapr);
 						$scope.a_croqui = json.a_croqui;
-						
 						$scope.alertColor = 'blue';
 						$scope.alertText  = 'Visualizando información de un alumno.';
-						$scope.formVisualizarShow = true;
+						$scope.formTitle = 'Visualizar';
+						$scope.readonly = true;
+						$scope.primarykey = true;
+						$scope.formFields = true;
+						$scope.visualiazarButtons = true;
 					})
 					.error(function(){
 						$session.destroy();
@@ -227,7 +233,7 @@ angular
 		};
 		$scope.visualizarCancelar = function(){
 			$scope.formsHide();
-			$scope.formTablaShow=true;
+			$scope.formGrid = true;
 		};
 
 		// Para el formulario modificar.
@@ -237,52 +243,54 @@ angular
 				$session.autorize(function(){
 					$http.get('models/alumno.get.php?a_docume='+a_docume)
 						.success(function(json){
-						a_nacimi = json.a_nacimi.split('-');
-						a_fechai = json.a_fechai.split('-');
-						a_fechaf = json.a_fechaf.split('-');
-						$scope.a_docume = parseInt(json.a_docume);
-						$scope.t_docume = parseInt(json.t_docume);
-						$scope.e_numero = parseInt(json.e_numero);
-						$scope.c_codigo = parseInt(json.c_codigo);
-						$scope.a_nombre = json.a_nombre;
-						$scope.a_nacion = json.a_nacion;
-						$scope.a_nacimid = parseInt(a_nacimi[2]);
-						$scope.a_nacimim = parseInt(a_nacimi[1]);
-						$scope.a_nacimiY = parseInt(a_nacimi[0]);
-						$scope.a_cuil   = parseInt(json.a_cuil);
-						$scope.a_domici = json.a_domici;
-						$scope.a_barrio = json.a_barrio;
-						$scope.a_correo = json.a_correo;
-						$scope.a_idioma = json.a_idioma;
-						$scope.a_telefo = parseInt(json.a_telefo);
-						$scope.a_condic = json.a_condic;
-						$scope.a_faltas = parseInt(json.a_faltas);
-						$scope.a_promed = parseFloat(json.a_promed);
-						$scope.a_celula = parseInt(json.a_celula);
-						$scope.a_fechaid = parseInt(a_fechai[2]);
-						$scope.a_fechaim = parseInt(a_fechai[1]);
-						$scope.a_fechaiY = parseInt(a_fechai[0]);
-						$scope.a_fechafd = parseInt(a_fechaf[2]);
-						$scope.a_fechafm = parseInt(a_fechaf[1]);
-						$scope.a_fechafY = parseInt(a_fechaf[0]);
-						$scope.a_titulo = json.a_titulo;
-						$scope.a_copdni = json.a_copdni;
-						$scope.a_copnac = json.a_copnac;
-						$scope.a_coppri = json.a_coppri;
-						$scope.a_copbol = json.a_copbol;
-						$scope.a_copecg = json.a_copecg;
-						$scope.a_copsal = json.a_copsal;
-						$scope.a_copmed = json.a_copmed;
-						$scope.a_copcuil =json.a_copcuil;
-						$scope.a_fotoca = json.a_fotoca;
-						$scope.a_egreso = json.a_egreso;
-						$scope.a_conreg = parseInt(json.a_conreg);
-						$scope.a_conapr = parseInt(json.a_conapr);
-						$scope.a_croqui = json.a_croqui;
-
+							a_nacimi = json.a_nacimi.split('-');
+							a_fechai = json.a_fechai.split('-');
+							a_fechaf = json.a_fechaf.split('-');
+							$scope.a_docume = parseInt(json.a_docume);
+							$scope.t_docume = json.t_docume;
+							$scope.e_numero = json.e_numero;
+							$scope.c_codigo = json.c_codigo;
+							$scope.a_nombre = json.a_nombre;
+							$scope.a_nacion = json.a_nacion;
+							$scope.a_nacimid = parseInt(a_nacimi[2]);
+							$scope.a_nacimim = parseInt(a_nacimi[1]);
+							$scope.a_nacimiY = parseInt(a_nacimi[0]);
+							$scope.a_cuil   = parseInt(json.a_cuil);
+							$scope.a_domici = json.a_domici;
+							$scope.a_barrio = json.a_barrio;
+							$scope.a_correo = json.a_correo;
+							$scope.a_idioma = json.a_idioma;
+							$scope.a_telefo = parseInt(json.a_telefo);
+							$scope.a_condic = json.a_condic;
+							$scope.a_faltas = parseInt(json.a_faltas);
+							$scope.a_promed = parseFloat(json.a_promed);
+							$scope.a_celula = parseInt(json.a_celula);
+							$scope.a_fechaid = parseInt(a_fechai[2]);
+							$scope.a_fechaim = parseInt(a_fechai[1]);
+							$scope.a_fechaiY = parseInt(a_fechai[0]);
+							$scope.a_fechafd = parseInt(a_fechaf[2]);
+							$scope.a_fechafm = parseInt(a_fechaf[1]);
+							$scope.a_fechafY = parseInt(a_fechaf[0]);
+							$scope.a_titulo = json.a_titulo;
+							$scope.a_copdni = json.a_copdni;
+							$scope.a_copnac = json.a_copnac;
+							$scope.a_coppri = json.a_coppri;
+							$scope.a_copbol = json.a_copbol;
+							$scope.a_copecg = json.a_copecg;
+							$scope.a_copsal = json.a_copsal;
+							$scope.a_copmed = json.a_copmed;
+							$scope.a_copcuil =json.a_copcuil;
+							$scope.a_fotoca = json.a_fotoca;
+							$scope.a_egreso = json.a_egreso;
+							$scope.a_conreg = parseInt(json.a_conreg);
+							$scope.a_conapr = parseInt(json.a_conapr);
+							$scope.a_croqui = json.a_croqui;
 							$scope.alertColor = 'yellow';
 							$scope.alertText  = 'Modificando información de un alumno.';
-							$scope.formModificarShow = true;
+							$scope.formTitle = 'Modificar';
+							$scope.primarykey = true;
+							$scope.formFields = true;
+							$scope.modificarButtons = true;
 						})
 						.error(function(){
 							$session.destroy();
@@ -292,7 +300,7 @@ angular
 		};
 		$scope.modificarCancelar = function(){
 			$scope.formsHide();
-			$scope.formTablaShow=true;
+			$scope.formGrid=true;
 		};
 		$scope.modificarAceptar = function(){
 			$session.autorize(function(){
@@ -337,9 +345,6 @@ angular
 							$scope.alertColor = 'green';
 							$scope.alertText  = 'El alumno se modifico con éxito.';
 							$scope.init();
-							$scope.tutoresInit();
-							$scope.escuelasInit();
-							$scope.cursosInit();
 						}
 						else {
 							$scope.alertColor = 'red';

@@ -14,6 +14,16 @@ angular
 				});
 		};
 
+		$scope.docentesInit = function(){
+			$http.get('models/docentes.get.php')
+				.success(function(json){
+					$scope.docentes = json;
+				})
+				.error(function(){
+					$session.destroy();
+				})
+		};
+
 		$scope.formsHide = function(){
 			$scope.formTablaShow = false;
 			$scope.formNuevoShow = false;
@@ -31,6 +41,7 @@ angular
 		$scope.nuevo = function(){
 			$scope.formsHide();
 			$scope.formNuevoShow = true;
+			$scope.d_docume = $scope.docentes[0].d_docume;
 		}
 		$scope.nuevoCancelar = function(){
 			$scope.formsHide();
@@ -73,7 +84,7 @@ angular
 				$http.get('models/materia.get.php?m_numero='+m_numero)
 					.success(function(json){
 						$scope.m_numero = parseInt(json.m_numero);
-						$scope.d_docume = parseInt(json.d_docume);
+						$scope.d_docume = json.d_docume;
 						$scope.m_nombre = json.m_nombre;
 						$scope.m_progra = json.m_progra;
 						$scope.alertColor = 'blue';
@@ -98,7 +109,7 @@ angular
 					$http.get('models/materia.get.php?m_numero='+m_numero)
 						.success(function(json){
 							$scope.m_numero = parseInt(json.m_numero);
-							$scope.d_docume = parseInt(json.d_docume);
+							$scope.d_docume = json.d_docume;
 							$scope.m_nombre = json.m_nombre;
 							$scope.m_progra = json.m_progra;
 							$scope.alertColor = 'yellow';
@@ -159,6 +170,7 @@ angular
 
 		$session.autorize(function(){
 			$session.mainmenu();
+			$scope.docentesInit();
 			$scope.init();
 		});
 

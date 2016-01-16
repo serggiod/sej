@@ -28,7 +28,7 @@
 						NOMBRE
 					</td>
 					<td>
-						TELEFONO
+						USUARIO
 					</td>
 					<td>
 						ACCIONES
@@ -42,7 +42,7 @@
 						{{d.d_nombre}}
 					</td>
 					<td>
-						{{d.d_telefo}}
+						{{d.u_nombre}}
 					</td>
 					<td>
 						<button type="button" class="blue darken-4 white-text" style="border:0;" ng-click="visualizar(d.d_docume)">
@@ -148,9 +148,12 @@
 					</div>
 
 					<!-- | u_codigo | int(5)     | YES  |     | NULL    |       | -->
+					<label for="u_codigo">Usuario:</label>
 					<div class="input-field">
-						<input id="u_codigo" type="number" maxlength="5" ng-model="u_codigo" class="validate">
-						<label for="u_codigo">Codigo:</label>
+						<select id="u_codigo" ng-model="u_codigo" class="browser-default">
+							<option ng-repeat="u in usuarios" value="{{u.u_codigo}}">{{u.u_nombre}}</option>
+						</select>
+						
 					</div>
 
 					<!-- | d_ecivil | char(5)    | YES  |     | NULL    |       | -->
@@ -323,9 +326,12 @@
 					</div>
 
 					<!-- | u_codigo | int(5)     | YES  |     | NULL    |       | -->
-					<label for="u_codigo">Codigo:</label>
+					<label for="u_codigo">Usuario:</label>
 					<div class="input-field">
-						<input id="u_codigo" type="number" maxlength="5" ng-model="u_codigo" class="validate" readonly>
+						<select id="u_codigo" ng-model="u_codigo" class="browser-default" disabled="disabled">
+							<option ng-repeat="u in usuarios" value="{{u.u_codigo}}">{{u.u_nombre}}</option>
+						</select>
+						
 					</div>
 
 					<!-- | d_ecivil | char(5)    | YES  |     | NULL    |       | -->
@@ -494,9 +500,12 @@
 					</div>
 
 					<!-- | u_codigo | int(5)     | YES  |     | NULL    |       | -->
-					<label for="u_codigo">Codigo:</label>
+					<label for="u_codigo">Usuario:</label>
 					<div class="input-field">
-						<input id="u_codigo" type="number" maxlength="5" ng-model="u_codigo" class="validate">
+						<select id="u_codigo" ng-model="u_codigo" class="browser-default">
+							<option ng-repeat="u in usuarios" value="{{u.u_codigo}}">{{u.u_nombre}}</option>
+						</select>
+						
 					</div>
 
 					<!-- | d_ecivil | char(5)    | YES  |     | NULL    |       | -->

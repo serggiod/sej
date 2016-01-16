@@ -25,7 +25,7 @@
 						NUMERO
 					</td>
 					<td>
-						DOCUMENTO
+						DOCENTE
 					</td>
 					<td>
 						NOMBRE
@@ -39,7 +39,7 @@
 						{{m.m_numero}}
 					</td>
 					<td>
-						{{m.d_docume}}
+						{{m.d_nombre}}
 					</td>
 					<td>
 						{{m.m_nombre}}
@@ -88,9 +88,11 @@
 					</div>
 
 					<!--| d_docume | int(9)  | NO   | PRI | 0       |       |-->
+					<label for="d_docume">Docente:</label>
 					<div class="input-field">
-						<input id="d_docume" type="number" maxlength="9" ng-model="d_docume" class="validate">
-						<label for="d_docume">Documento:</label>
+						<select id="d_docume" ng-model="d_docume" class="browser-default">
+							<option ng-repeat="d in docentes" value="{{d.d_docume}}">{{d.d_nombre}}</option>
+						</select>
 					</div>
 
 					<!--| m_nombre | char(6) | YES  |     | NULL    |       |-->
@@ -143,9 +145,11 @@
 					</div>
 
 					<!--| d_docume | int(9)  | NO   | PRI | 0       |       |-->
-					<label for="d_docume">Documento:</label>
+					<label for="d_docume">Docente:</label>
 					<div class="input-field">
-						<input id="d_docume" type="number" maxlength="9" ng-model="d_docume" class="validate" readonly>
+						<select id="d_docume" ng-model="d_docume" class="browser-default" disabled="disabled">
+							<option ng-repeat="d in docentes" value="{{d.d_docume}}">{{d.d_nombre}}</option>
+						</select>
 					</div>
 
 					<!--| m_nombre | char(6) | YES  |     | NULL    |       |-->
@@ -194,9 +198,11 @@
 					</div>
 
 					<!--| d_docume | int(9)  | NO   | PRI | 0       |       |-->
-					<label for="d_docume">Documento:</label>
+					<label for="d_docume">Docente:</label>
 					<div class="input-field">
-						<input id="d_docume" type="number" maxlength="9" ng-model="d_docume" class="validate" readonly>
+						<select id="d_docume" ng-model="d_docume" class="browser-default">
+							<option ng-repeat="d in docentes" value="{{d.d_docume}}">{{d.d_nombre}}</option>
+						</select>
 					</div>
 
 					<!--| m_nombre | char(6) | YES  |     | NULL    |       |-->

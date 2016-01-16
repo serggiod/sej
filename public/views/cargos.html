@@ -22,10 +22,10 @@
 			<table class="table bordered striped highlight responsive-table">
 				<tr>
 					<td>
-						DOCUMENTO
+						DOCENTE
 					</td>
 					<td>
-						NUMERO
+						ESCUELA
 					</td>
 					<td>
 						CARGO
@@ -36,10 +36,10 @@
 				</tr>
 				<tr ng-repeat="c in cargos">
 					<td>
-						{{c.d_docume}}
+						{{c.d_nombre}}
 					</td>
 					<td>
-						{{c.e_numero}}
+						{{c.e_nombre}}
 					</td>
 					<td>
 						{{c.dc_cargo}}
@@ -83,21 +83,25 @@
 
 
 					<!--| d_docume | int(9)  | NO   |     | 0       |       |-->
+					<label for="d_docume">Docente:</label>
 					<div class="input-field">
-						<input id="d_docume" type="number" maxlength="9" ng-model="d_docume" class="validate">
-						<label for="d_docume">Documento:</label>
+						<select id="d_docume" ng-model="d_docume" class="browser-default">
+							<option ng-repeat="d in docentes" value="{{d.d_docume}}">{{d.d_nombre}}</option>
+						</select>
 					</div>
 
 					<!-- | e_numero | int(3)  | NO   |     | 0       |       |-->
+					<label for="e_numero">Escuela:</label>
 					<div class="input-field">
-						<input id="e_numero" type="number" maxlength="3" ng-model="e_numero" class="validate">
-						<label for="e_numero">Numero:</label>
+						<select id="e_numero" ng-model="e_numero" class="browser-default">
+							<option ng-repeat="e in escuelas" value="{{e.e_numero}}">{{e.e_nombre}}</option>
+						</select>
 					</div>
 
 					<!--| dc_cargo | char(6) | YES  |     | NULL    |       |-->
+					<label for="dc_cargo">Cargo:</label>
 					<div class="input-field">
 						<input id="dc_cargo" type="text" maxlength="6" ng-model="dc_cargo" class="validate">
-						<label for="dc_cargo">Cargo:</label>
 					</div>
 
 					<!--| dc_alta  | date    | YES  |     | NULL    |       |-->
@@ -174,17 +178,20 @@
 				<div class="card-content white black-text">
 
 					<!--| d_docume | int(9)  | NO   |     | 0       |       |-->
-						<label for="d_docume">Documento:</label>
+					<label for="d_docume">Docente:</label>
 					<div class="input-field">
-						<input id="d_docume" type="number" maxlength="9" ng-model="d_docume" readonly class="validate">
-
+						<select id="d_docume" ng-model="d_docume" class="browser-default" disabled="disabled">
+							<option ng-repeat="d in docentes" value="{{d.d_docume}}">{{d.d_nombre}}</option>
+						</select>
 					</div>
 
 					<!-- | e_numero | int(3)  | NO   |     | 0       |       |-->
+					<label for="e_numero">Escuela:</label>
 					<div class="input-field">
-						<input id="e_numero" type="number" maxlength="3" ng-model="e_numero" readonly class="validate">
-						<label for="e_numero">Numero:</label>
-					</div>					
+						<select id="e_numero" ng-model="e_numero" class="browser-default" disabled="disabled">
+							<option ng-repeat="e in escuelas" value="{{e.e_numero}}">{{e.e_nombre}}</option>
+						</select>
+					</div>
 
 					<!--| dc_cargo | char(6) | YES  |     | NULL    |       |-->
 						<label for="dc_cargo">Cargo:</label>
@@ -266,16 +273,19 @@
 				<div class="card-content white black-text">
 
 					<!--| d_docume | int(9)  | NO   |     | 0       |       |-->
-						<label for="d_docume">Documento:</label>
+					<label for="d_docume">Docente:</label>
 					<div class="input-field">
-						<input id="d_docume" type="number" maxlength="9" ng-model="d_docume" readonly class="validate">
-
+						<select id="d_docume" ng-model="d_docume" class="browser-default" disabled="disabled">
+							<option ng-repeat="d in docentes" value="{{d.d_docume}}">{{d.d_nombre}}</option>
+						</select>
 					</div>
 
 					<!-- | e_numero | int(3)  | NO   |     | 0       |       |-->
+					<label for="e_numero">Escuela:</label>
 					<div class="input-field">
-						<input id="e_numero" type="number" maxlength="3" ng-model="e_numero" class="validate">
-						<label for="e_numero">Numero:</label>
+						<select id="e_numero" ng-model="e_numero" class="browser-default">
+							<option ng-repeat="e in escuelas" value="{{e.e_numero}}">{{e.e_nombre}}</option>
+						</select>
 					</div>					
 
 					<!--| dc_cargo | char(6) | YES  |     | NULL    |       |-->

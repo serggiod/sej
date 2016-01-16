@@ -74,7 +74,7 @@ angular
 			$session.autorize(function(){
 				$http.get('models/escuela.get.php?numero='+numero)
 					.success(function(json){
-						$scope.numero = json.numero;
+						$scope.numero = parseInt(json.numero);
 						$scope.nombre = json.nombre;
 						$scope.direccion = json.direccion;
 						$scope.telefono = json.telefono;
@@ -100,7 +100,7 @@ angular
 				$session.autorize(function(){
 					$http.get('models/escuela.get.php?numero='+numero)
 						.success(function(json){
-							$scope.numero = json.numero;
+							$scope.numero = parseInt(json.numero);
 							$scope.nombre = json.nombre;
 							$scope.direccion = json.direccion;
 							$scope.telefono = json.telefono;
