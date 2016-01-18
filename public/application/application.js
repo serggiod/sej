@@ -46,6 +46,10 @@ angular
 		    	templateUrl:'views/licencias.html',
 		    	controller:'licencias'
 		    })
+		    .when('/libretas',{
+		    	templateUrl:'views/libretas.html',
+		    	controller:'libretas'
+		    })
 		    .when('/materias',{
 		    	templateUrl:'views/materias.html',
 		    	controller:'materias'

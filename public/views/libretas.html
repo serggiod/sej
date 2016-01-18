@@ -1,0 +1,209 @@
+<!-- Formulario: grid-->
+<div class="col s12 m12 l12" ng-show="formGrid">
+	<div class="card white z-depth-3">
+
+		<!-- Titulo del formulario-->
+		<div class="card grey lighten-3">
+			<div class="card-action">
+				<h5 class="center">
+					LIBRETAS | Lista
+				</h5>
+			</div>			
+		</div>
+		<div class="card-content white black-text">
+
+			<!-- Boton: Nueva Escuela -->
+			<buttton type="button" class="btn orange darken-4" ng-click="nuevo()">
+				Nueva Libreta
+				<i class="icons ion-android-add-circle right"></i>
+			</buttton>
+
+			<!-- Tabla: ALUMNOS -->
+			<table class="table bordered striped highlight responsive-table">
+				<tr>
+					<td>
+						MATERIA
+					</td>
+					<td>
+						ALUMNO
+					</td>
+					<td>
+						PROMEDIO
+					</td>
+					<td>
+						ACCIONES
+					</td>
+				</tr>
+				<tr ng-repeat="l in libretas">
+					<td>
+						{{l.m_nombre}}
+					</td>
+					<td>
+						{{l.a_nombre}}
+					</td>
+					<td>
+						{{l.l_promed}}
+					</td>
+					<td>
+						<button type="button" class="blue darken-4 white-text" style="border:0;" ng-click="visualizar(l.m_numero)">
+							<i class="icons ion-android-search"></i>
+						</button>
+						<button type="button" class="blue darken-4 white-text" style="border:0;" ng-click="modificar(l.m_numero)">
+							<i class="icons ion-android-create"></i>
+						</button>
+						<button type="button" class="red darken-4 white-text" style="border:0;" ng-click="eliminar(l.m_numero)">
+							<i class="icons ion-android-remove-circle"></i>
+						</button>
+					</td>
+				</tr>
+
+			</table>
+		</div>
+		<div class="card-action blue darken-3">
+			
+		</div>
+		
+	</div>
+</div>
+
+<!-- Formulario: Fields -->
+<div class="col s12 m12 l12" ng-show="formFields">
+	<div class="row">
+		<div class="col s10 m8 l6 offset-s1 offset-2 offset-l3">
+			<div class="card white z-depth-5">
+				<div class="card-action grey lighten-3 center">
+					<h5>
+						LIBRETAS | {{formTitle}}
+					</h5>
+				</div>
+				<div class="cardç-action {{alertColor}} lighten-4 black-text">
+					{{alertText}}
+				</div>
+				<div class="card-content white black-text">
+
+				<!-- | m_numero | int(2)  | NO   | PRI | 0       |       |-->
+					<label for="m_numero">Materia:</label>
+					<div class="input-field">
+						<select id="m_numero" ng-model="m_numero" class="browser-default" ng-disabled="primarykey">
+							<option ng-repeat="m in materias" value="{{m.m_numero}}">{{m.m_nombre}}</option>
+						</select>
+						
+					</div>
+				
+				<!-- | a_docume | int(9)  | NO   | PRI | 0       |       |-->
+					<label for="a_docume">Alumno:</label>
+					<div class="input-field">
+						<select id="a_docume" ng-model="a_docume" class="browser-default" ng-disabled="readonly">
+							<option ng-repeat="a in alumnos" value="{{a.a_docume}}">{{a.a_nombre}}</option>
+						</select>
+						
+					</div>
+
+				<!-- | l_nota1  | float   | YES  |     | NULL    |       |-->
+					<label for="l_nota1">Nota 1:</label>
+					<div class="input-field">
+						<fieldset id="l_nota1" class="validate" ng-disabled="readonly">
+							<input type="number" min="1" max="10" ng-model="l_nota1_1" style="width:90px;"/>,<input type="number" min="0" max="99" ng-model="l_nota1_2" style="width:90px;"/>
+						</fieldset>
+					</div>
+
+				<!-- | l_nota2  | float   | YES  |     | NULL    |       |-->
+					<label for="l_nota2">Nota 2:</label>
+					<div class="input-field">
+						<fieldset id="l_nota2" class="validate" ng-disabled="readonly">
+							<input type="number" min="1" max="10" ng-model="l_nota2_1" style="width:90px;"/>,<input type="number" min="0" max="99" ng-model="l_nota2_2" style="width:90px;"/>
+						</fieldset>
+					</div>
+
+				<!-- | l_nota3  | float   | YES  |     | NULL    |       |-->
+					<label for="l_nota3">Nota 3:</label>
+					<div class="input-field">
+						<fieldset id="l_nota3" class="validate" ng-disabled="readonly">
+							<input type="number" min="1" max="10" ng-model="l_nota3_1" style="width:90px;"/>,<input type="number" min="0" max="99" ng-model="l_nota3_2" style="width:90px;"/>
+						</fieldset>
+					</div>
+
+				<!-- | l_promed | float   | YES  |     | NULL    |       |-->
+					<label for="l_promed">Promedio:</label>
+					<div class="input-field">
+						<fieldset id="l_promed" class="validate" ng-disabled="readonly">
+							<input type="number" min="1" max="10" ng-model="l_promed_1" style="width:90px;"/>,<input type="number" min="0" max="99" ng-model="l_promed_2" style="width:90px;"/>
+						</fieldset>
+					</div>
+
+				<!-- | l_recup1 | float   | YES  |     | NULL    |       |-->
+					<label for="l_recup1">Recuperatorio 1:</label>
+					<div class="input-field">
+						<fieldset id="l_recup1" class="validate" ng-disabled="readonly">
+							<input type="number" min="1" max="10" ng-model="l_recup1_1" style="width:90px;"/>,<input type="number" min="0" max="99" ng-model="l_recup1_2" style="width:90px;"/>
+						</fieldset>
+					</div>
+
+				<!-- | l_recup2 | float   | YES  |     | NULL    |       |-->
+					<label for="l_recup2">Recuperatorio 2:</label>
+					<div class="input-field">
+						<fieldset id="l_recup2" class="validate" ng-disabled="readonly">
+							<input type="number" min="1" max="10" ng-model="l_recup2_1" style="width:90px;"/>,<input type="number" min="0" max="99" ng-model="l_recup2_2" style="width:90px;"/>
+						</fieldset>
+					</div>
+
+				<!-- | l_recup3 | float   | YES  |     | NULL    |       |-->
+					<label for="l_recup3">Recuperatorio 3:</label>
+					<div class="input-field">
+						<fieldset id="l_recup3" class="validate" ng-disabled="readonly">
+							<input type="number" min="1" max="10" ng-model="l_recup3_1" style="width:90px;"/>,<input type="number" min="0" max="99" ng-model="l_recup3_2" style="width:90px;"/>
+						</fieldset>
+					</div>
+
+				<!-- | l_notafi | float   | YES  |     | NULL    |       |-->
+					<label for="l_notafi">Nota Final:</label>
+					<div class="input-field">
+						<fieldset id="l_notafi" class="validate" ng-disabled="readonly">
+							<input type="number" min="1" max="10" ng-model="l_notafi_1" style="width:90px;"/>,<input type="number" min="0" max="99" ng-model="l_notafi_2" style="width:90px;"/>
+						</fieldset>
+					</div>
+
+				<!-- | l_observ | char(6) | YES  |     | NULL    |       |-->
+					<label for="l_observ">Observaciones:</label>
+					<div class="input-field">
+						<input id="l_observ" type="text" maxlength="6" ng-model="l_observ" class="validate" ng-readonly="readonly">
+					</div>
+
+				<!-- | l_coplib | char(6) | YES  |     | NULL    |       |-->
+					<label for="l_coplib">Cop Lib:</label>
+					<div class="input-field">
+						<input id="l_coplib" type="text" maxlength="6" ng-model="l_coplib" class="validate" ng-readonly="readonly">
+					</div>
+
+			
+				</div>
+				<div class="card-action blue darken-3" ng-show="visualizarButtons">
+					<buttton type="button" class="btn orange darken-4" ng-click="visualizarCancelar()">
+						Aceptar
+						<i class="icons ion-android-cancel right"></i>
+					</buttton>			
+				</div>
+				<div class="card-action blue darken-3" ng-show="nuevoButtons">
+					<buttton type="button" class="btn orange darken-4" ng-click="nuevoCancelar()">
+						Cancelar
+						<i class="icons ion-android-cancel right"></i>
+					</buttton>
+					<buttton type="button" class="btn orange darken-4" ng-click="nuevoAceptar()">
+						Aceptar
+						<i class="icons ion-android-send right"></i>
+					</buttton>			
+				</div>
+				<div class="card-action blue darken-3" ng-show="modificarButtons">
+					<buttton type="button" class="btn orange darken-4" ng-click="modificarCancelar()">
+						Cancelar
+						<i class="icons ion-android-cancel right"></i>
+					</buttton>
+					<buttton type="button" class="btn orange darken-4" ng-click="modificarAceptar()">
+						Aceptar
+						<i class="icons ion-android-send right"></i>
+					</buttton>			
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
