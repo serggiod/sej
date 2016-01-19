@@ -162,6 +162,10 @@ angular
 			}
 		};
 
+		$scope.abrir = function(e_numero){
+			$location.path('/escuelas-cursos/'+e_numero);
+		};
+
 		$session.autorize(function(){
 			$session.mainmenu();
 			$scope.init();

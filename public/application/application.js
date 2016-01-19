@@ -66,5 +66,9 @@ angular
 		    	templateUrl:'views/docentes.html',
 		    	controller:'docentes'
 		    })
+		    .when('/escuelas-cursos/:e_numero',{
+		    	templateUrl:'views/escuelas.cursos.html',
+		    	controller:'escuelas-cursos'
+		    })
 		    .otherwise({redirectTo:'/login'});
 	});

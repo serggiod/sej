@@ -1,0 +1,80 @@
+<!-- Formulario: tabla-->
+<div class="col s12 m12 l12" ng-show="formGrid">
+	<div class="card white z-depth-3">
+
+		<!-- Titulo del formulario-->
+		<div class="card grey lighten-3">
+			<div class="card-action">
+				<h5 class="center">
+					ESCUELAS << Cursos
+				</h5>
+			</div>			
+		</div>
+		<div class="card-content white black-text">
+
+			<!-- Nombre de la escuela -->
+			<h3>{{escuela.nombre}} {{escuela.numero}}</h3>
+			<h5>Direci&oacute;n: {{escuela.direccion}} | Te&eacute;fono: {{escuela.telefono}}</h5>
+
+			<!-- Select Cursos -->
+			<select ng-model="c_codigo" class="browser-default">
+				<option ng-repeat="c in cursosl" value="{{c.c_codigo}}">{{c.c_codigo}} {{c.c_divisi}} {{c.c_anio}} {{c.c_turno}}</option>
+			</select>
+			<!-- Boton: Nueva Escuela -->
+			<buttton type="button" class="btn orange darken-4" ng-click="nuevo()">
+				Nuevo curso
+				<i class="icons ion-android-add-circle right"></i>
+			</buttton>
+
+			<buttton type="button" class="btn blue darken-4" ng-click="volver()">
+				Volver a Escuela
+				<i class="icons ion-android-arrow-back right"></i>
+			</buttton>
+
+			<!-- Tabla: Escuelas -->
+			<table class="table bordered striped highlight responsive-table">
+				<tr>
+					<td>
+						CODIGO
+					</td>
+					<td>
+						A&Ntilde;O
+					</td>
+					<td>
+						DIVISION
+					</td>
+					<td>
+						TURNO
+					</td>
+					<td>
+						ACCIONES
+					</td>
+				</tr>
+				<tr ng-repeat="c in cursos">
+					<td>
+						{{c.c_codigo}}
+					</td>
+					<td>
+						{{c.c_anio}}
+					</td>
+					<td>
+						{{c.c_divisi}}
+					</td>
+					<td>
+						{{c.c_turno}}
+					</td>
+					<td>
+						<button type="button" class="red darken-4 white-text" style="border:0;" ng-click="eliminar(c.c_codigo)">
+							<i class="icons ion-android-remove-circle"></i>
+						</button>
+					</td>
+				</tr>
+
+			</table>
+		</div>
+		<div class="card-action blue darken-3">
+			
+		</div>
+		
+	</div>
+</div>
