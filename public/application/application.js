@@ -70,5 +70,13 @@ angular
 		    	templateUrl:'views/escuelas.cursos.html',
 		    	controller:'escuelas-cursos'
 		    })
+		    .when('/cursos-materias/:c_codigo',{
+		    	templateUrl:'views/cursos.materias.html',
+		    	controller:'cursos-materias'
+		    })
+		    .when('/cursos-docentes/:c_codigo',{
+		    	templateUrl:'views/cursos.docentes.html',
+		    	controller:'cursos-docentes'
+		    })
 		    .otherwise({redirectTo:'/login'});
 	});

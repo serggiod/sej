@@ -1,57 +1,58 @@
 <!-- Formulario: tabla-->
-<div class="col s12 m12 l12" ng-show="formTablaShow">
+<div class="col s12 m12 l12" ng-show="formGrid">
 	<div class="card white z-depth-3">
 
 		<!-- Titulo del formulario-->
 		<div class="card grey lighten-3">
 			<div class="card-action">
 				<h5 class="center">
-					ESCUELAS << Cursos
+					CURSOS << Materias
 				</h5>
 			</div>			
 		</div>
 		<div class="card-content white black-text">
 
+			<!-- Nombre de la escuela -->
+			<h3>{{curso.c_codigo}} {{curso.c_divisi}} {{curso.c_anio}}</h3>
+			<h5>| {{curso.c_descri}}</h5>
+
+			<!-- Select Cursos -->
+			<select ng-model="m_numero" class="browser-default">
+				<option ng-repeat="m in materiasl" value="{{m.m_numero}}">{{m.m_nombre}}</option>
+			</select>
 			<!-- Boton: Nueva Escuela -->
 			<buttton type="button" class="btn orange darken-4" ng-click="nuevo()">
-				A&natilde;adir Curso
+				Nueva materia
 				<i class="icons ion-android-add-circle right"></i>
 			</buttton>
 
-			<!-- Tabla: ALUMNOS -->
+			<buttton type="button" class="btn blue darken-4" ng-click="volver()">
+				Volver a cursos
+				<i class="icons ion-android-arrow-back right"></i>
+			</buttton>
+
+			<!-- Tabla: Escuelas -->
 			<table class="table bordered striped highlight responsive-table">
 				<tr>
 					<td>
-						CODIGO
+						MATERIA
 					</td>
 					<td>
-						A&Ntilde;O
-					</td>
-					<td>
-						DIVISION
+						DOCENTE
 					</td>
 					<td>
 						ACCIONES
 					</td>
 				</tr>
-				<tr ng-repeat="c in cursos">
+				<tr ng-repeat="m in materias">
 					<td>
-						{{c.c_codigo}}
+						{{m.m_nombre}}
 					</td>
 					<td>
-						{{c.c_anio}}
+						{{m.d_docume}}
 					</td>
 					<td>
-						{{c.c_divisi}}
-					</td>
-					<td>
-						<button type="button" class="blue darken-4 white-text" style="border:0;" ng-click="visualizar(c.c_codigo)">
-							<i class="icons ion-android-search"></i>
-						</button>
-						<button type="button" class="blue darken-4 white-text" style="border:0;" ng-click="modificar(c.c_codigo)">
-							<i class="icons ion-android-create"></i>
-						</button>
-						<button type="button" class="red darken-4 white-text" style="border:0;" ng-click="eliminar(c.c_codigo)">
+						<button type="button" class="red darken-4 white-text" style="border:0;" ng-click="eliminar(m.m_numero)">
 							<i class="icons ion-android-remove-circle"></i>
 						</button>
 					</td>

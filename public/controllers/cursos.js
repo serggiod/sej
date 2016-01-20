@@ -162,6 +162,14 @@ angular
 			}
 		};
 
+		$scope.materias = function(c_codigo){
+			$location.path('/cursos-materias/'+c_codigo);
+		};
+
+		$scope.docentes = function(c_codigo){
+			$location.path('/cursos-docentes/'+c_codigo);
+		};
+
 		$session.autorize(function(){
 			$session.mainmenu();
 			$scope.init();
