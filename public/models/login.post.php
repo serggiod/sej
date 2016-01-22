@@ -22,7 +22,9 @@ if($_SERVER['REQUEST_METHOD']==='POST'){
 			'user'=>null
 		);
 
-		$query = $db->query("select u_codigo codigo, u_nombre nombre, u_correo correo from usuario where u_nombre='$u_nombre' and u_clave='$u_clave';");
+		$sql = "select u_codigo codigo, u_nombre nombre, u_correo correo from usuario where u_nombre='$u_nombre' and u_clave='$u_clave';";
+		error_log($sql);
+		$query = $db->query($sql);
 		$usuario = $query->fetch(PDO::FETCH_OBJ);
 		
 		if(is_numeric($usuario->codigo)){

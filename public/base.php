@@ -16,6 +16,8 @@ if(!extension_loaded('pdo_mysql')){
 }
 
 // Crear un enlace a la base de datos.
+// MySQl: $db = new PDO('mysql:host=localhost;dbname=testsej','test','test');
+// PostgreSQL $db = new PDO('postgres:host=localhost;dbname=testsej','test','test');
 $db = new PDO('mysql:host=localhost;dbname=testsej','test','test');
 
 // Autocarga de funciones.

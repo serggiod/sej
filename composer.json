@@ -1,0 +1,14 @@
+{
+    "name": "sergio/sej",
+    "authors": [
+        {
+            "name": "serggiod",
+            "email": "serggio@msn.com"
+        }
+    ],
+    "require": {
+    },
+    "require-dev": {
+       "heroku/heroku-buildpack-php": "*"
+    }
+}

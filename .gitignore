@@ -1,2 +1,6 @@
+conf
+cont/*.*
 sql
 sql/*.*
+
+/vendor/
