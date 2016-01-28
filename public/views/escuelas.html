@@ -12,15 +12,13 @@
 		</div>
 		<div class="card-content white black-text">
 
-			<div class="nav orange darken-3 z-depth-1">
-				<!-- Boton: Nueva Escuela -->
-				<buttton type="button" class="btn orange darken-2" ng-click="nuevo()">
-					Nueva Escuela
-					<i class="icons ion-android-add-circle right"></i>
-				</buttton>
-			</div>
+			<!-- Boton: Nueva Escuela -->
+			<buttton type="button" class="btn orange darken-2" ng-click="nuevo()">
+				Nueva Escuela
+				<i class="icons ion-android-add-circle right"></i>
+			</buttton>
+			
 			<div>
-
 				<label><h5>Filtros:</h5></label>
 				<fieldset name="Filtros">
 
@@ -105,10 +103,10 @@
 			<ul class="pagination white-text">
 				<li><a class="waves-effect btn blue white-text" ng-click="first()">|<</a></li>
 				<li><a class="waves-effect btn blue white-text" ng-click="prev()"><<</a></li>
-				<li><span class="btn blue white-text"> P&aacute;gina: {{posx}} de {{total}}</span></li>
+				<li><span class="btn blue white-text"> P&aacute;gina: {{posx}} de {{posf}}</span></li>
 				<li><a class="waves-effect btn blue white-text" ng-click="next()">>></a></li>
 				<li><a class="waves-effect btn blue white-text" ng-click="last()">>|</a></li>
-			</ul>			
+			</ul>
 		</div>
 		
 	</div>
