@@ -2,11 +2,19 @@ angular
 	.module('sej')
 	.controller('escuelas',function($scope,$location,$http,$session){
 		
+		$scope.filtros = {
+			nombre:'',
+			numero:0
+		};
+
 		$scope.init = function(){
 			$scope.formsHide();
-			$http.get('models/escuelas.get.php')
+			json = {filtros:$scope.filtros};
+			$http.get('models/escuelas.get.php?json='+JSON.stringify(json))
 				.success(function(json){
-					$scope.escuelas = json;
+					$scope.filtros = json.filtros;
+					$scope.filtros.numero = parseInt($scope.filtros.numero);
+					$scope.escuelas = json.registros;
 					$scope.formTablaShow = true;
 				})
 				.error(function(){
@@ -164,6 +172,18 @@ angular
 
 		$scope.abrir = function(e_numero){
 			$location.path('/escuelas-cursos/'+e_numero);
+		};
+
+		$scope.filtrar = function(){
+			$scope.init();
+		};
+
+		$scope.nofiltrar = function(){
+			$scope.filtros = {
+				nombre: '',
+				numero: 0
+			};
+			$scope.init();
 		};
 
 		$session.autorize(function(){
