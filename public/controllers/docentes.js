@@ -2,11 +2,20 @@ angular
 	.module('sej')
 	.controller('docentes',function($scope,$location,$http,$session){
 		
+		$scope.filtros = {
+			documento:'',
+			nombre:'',
+			usuario:''
+		};
+
 		$scope.init = function(){
 			$scope.formsHide();
-			$http.get('models/docentes.get.php')
+			json = {filtros:$scope.filtros};
+			$http.get('models/docentes.get.php?json='+JSON.stringify(json))
 				.success(function(json){
-					$scope.docentes = json;
+					$scope.filtros = json.filtros;
+					$scope.filtros.documento = parseInt($scope.filtros.documento);
+					$scope.docentes = json.registros;
 					$scope.formTablaShow = true;
 				})
 				.error(function(){
@@ -268,6 +277,19 @@ angular
 						});	
 				});
 			}
+		};
+
+		$scope.filtrar = function(){
+			$scope.init();
+		};
+
+		$scope.nofiltrar = function(){
+			$scope.filtros = {
+				documento:'',
+				nombre:'',
+				usuario:''
+			};
+			$scope.init();
 		};
 
 		$session.autorize(function(){
