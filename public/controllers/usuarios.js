@@ -1,12 +1,21 @@
 angular
 	.module('sej')
 	.controller('usuarios',function($scope,$location,$http,$session){
-		
+
+		$scope.filtros = {
+			codigo: '',
+			nombre: '',
+			correo: ''
+		};
+
 		$scope.init = function(){
 			$scope.formsHide();
-			$http.get('models/usuarios.get.php')
+			json = {filtros:$scope.filtros};
+			$http.get('models/usuarios.get.php?json='+JSON.stringify(json))
 				.success(function(json){
-					$scope.usuarios = json;
+					$scope.filtros = json.filtros;
+					$scope.filtros.codigo = parseInt($scope.filtros.codigo);
+					$scope.usuarios = json.registros;
 					$scope.formTablaShow = true;
 				})
 				.error(function(){
@@ -165,6 +174,19 @@ angular
 						});	
 				});
 			}
+		};
+
+		$scope.filtrar = function(){
+			$scope.init();
+		};
+
+		$scope.nofiltrar = function(){
+			$scope.filtros = {
+				codigo: '',
+				nombre: '',
+				correo: ''
+			};
+			$scope.init();
 		};
 
 		$session.autorize(function(){
