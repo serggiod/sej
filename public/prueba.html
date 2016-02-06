@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es" ng-app="sej">
+<head>
+	<meta charset="UTF-8"/>
+	<title>Prueba</title>
+</head>
+<body class="body backwhite">
+
+	<!-- Polyfill: Webcomponents -->
+	<script src="/webcomponents/webcomponentsjs/webcomponents.min.js"></script>
+
+	<!-- Libreria JS: Materialize -->
+	<link rel="stylesheet" href="/jscdn/Materialize/dist/css/materialize.min.css">
+	<script src="/jscdn/Materialize/dist/js/materialize.min.js"></script>
+
+	<!-- Importe elements -->
+	<link rel="import" href="/webcomponents/panels/panel-left-main.html">
+
+</body>
+	<panel-left-main class="row" classleft="blue darken-4 white-text">
+
+		<div panel-navbar></div>
+
+		<div panel-left>
+			Contenido
+		</div>
+
+		<div panel-main>
+			Contenido
+		</div>
+
+	</panel-left-main>
+</html>

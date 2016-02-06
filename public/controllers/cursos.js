@@ -2,11 +2,23 @@ angular
 	.module('sej')
 	.controller('cursos',function($scope,$location,$http,$session){
 		
+		$scope.filtros = {
+			codigo:'',
+			anio:'',
+			division:''
+		};
+		
+
 		$scope.init = function(){
 			$scope.formsHide();
-			$http.get('models/cursos.get.php')
+			json = {filtros:$scope.filtros};
+			$http.get('models/cursos.get.php?json='+JSON.stringify(json))
 				.success(function(json){
-					$scope.cursos = json;
+					$scope.filtros = json.filtros;
+					$scope.filtros.codigo = parseInt($scope.filtros.codigo);
+					$scope.filtros.anio = parseInt($scope.filtros.anio);
+					$scope.filtros.division = parseInt($scope.filtros.division);
+					$scope.cursos = json.registros;
 					$scope.formTablaShow = true;
 				})
 				.error(function(){
@@ -168,6 +180,19 @@ angular
 
 		$scope.docentes = function(c_codigo){
 			$location.path('/cursos-docentes/'+c_codigo);
+		};
+
+		$scope.filtrar = function(){
+			$scope.init();
+		};
+
+		$scope.nofiltrar = function(){
+			$scope.filtros = {
+				codigo:'',
+				anio:'',
+				division:''
+			};
+			$scope.init();
 		};
 
 		$session.autorize(function(){
